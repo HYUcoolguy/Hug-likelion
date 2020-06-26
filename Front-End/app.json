@@ -1,0 +1,12 @@
+{
+  "name": "Front-End",
+  "displayName": "Front-End",
+  "expo": {
+    "name": "Front-End",
+    "slug": "expo-template-bare",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

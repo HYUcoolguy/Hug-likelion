@@ -1,0 +1,36 @@
+{
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject"
+  },
+  "dependencies": {
+    "@react-native-community/masked-view": "^0.1.10",
+    "@react-navigation/bottom-tabs": "^5.6.1",
+    "@react-navigation/drawer": "^5.8.4",
+    "@react-navigation/material-bottom-tabs": "^5.2.12",
+    "@react-navigation/native": "^5.6.1",
+    "@react-navigation/stack": "^5.6.2",
+    "expo": "~38.0.1",
+    "expo-status-bar": "^1.0.0",
+    "react": "~16.11.0",
+    "react-dom": "~16.11.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.0.tar.gz",
+    "react-native-calendars": "^1.300.0",
+    "react-native-gesture-handler": "~1.6.0",
+    "react-native-paper": "^3.10.1",
+    "react-native-reanimated": "~1.9.0",
+    "react-native-safe-area-context": "^3.0.2",
+    "react-native-screens": "~2.9.0",
+    "react-native-vector-icons": "^6.6.0",
+    "react-native-web": "~0.11.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.6",
+    "babel-preset-expo": "~8.1.0"
+  },
+  "private": true
+}

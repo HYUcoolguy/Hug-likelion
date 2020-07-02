@@ -4,9 +4,9 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  SafeAreaView
 } from "react-native";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import NullScreen from "./NullScreen";
 import { Ionicons, Entypo, AntDesign } from "@expo/vector-icons";
 
@@ -16,7 +16,7 @@ export default class DetailScreen extends React.Component {
     const { posts } = route.params;
 
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <Header navigation={navigation} />
         {posts ? (
           <View style={styles.contentsContainer}>
@@ -32,7 +32,7 @@ export default class DetailScreen extends React.Component {
         ) : (
           <NullScreen />
         )}
-      </View>
+      </SafeAreaView>
     );
   }
 }
@@ -56,7 +56,7 @@ const Header = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFB6C1"
+    backgroundColor: "white"
   },
   header: {
     paddingTop: 20,

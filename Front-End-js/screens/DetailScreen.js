@@ -5,10 +5,13 @@ import {
   Text,
   View,
   TouchableOpacity,
-  SafeAreaView
+  SafeAreaView,
+  Dimensions
 } from "react-native";
 import NullScreen from "./NullScreen";
 import { Ionicons, Entypo, AntDesign } from "@expo/vector-icons";
+
+const { width, height } = Dimensions.get("window");
 
 export default class DetailScreen extends React.Component {
   render() {
@@ -63,6 +66,19 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white"
   },
+  contentsContainer: {
+    margin: 15,
+    padding: 20,
+    height: height
+  },
+  headerContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderBottomWidth: 1,
+    borderBottomColor: "gray",
+    justifyContent: "space-between",
+    paddingBottom: 10
+  },
   headerBack: {
     flex: 1,
     marginLeft: 10
@@ -71,16 +87,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "flex-end",
     marginRight: 10
-  },
-  contentsContainer: {
-    paddingTop: 20
-  },
-  headerContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    borderBottomWidth: 1,
-    justifyContent: "space-between",
-    paddingBottom: 10
   },
   titleContainer: {
     justifyContent: "center",

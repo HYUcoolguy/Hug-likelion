@@ -39,15 +39,20 @@ export default class DetailScreen extends React.Component {
 
 const Header = ({ navigation }) => {
   return (
-    <View>
+    <View style={styles.headerContainer}>
       <TouchableOpacity
-        style={styles.header}
+        style={styles.headerBack}
         onPress={() => {
           navigation.goBack();
         }}
       >
         <Ionicons name="ios-arrow-back" size={30} />
-        <Text style={styles.Text}>Back</Text>
+      </TouchableOpacity>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Hug</Text>
+      </View>
+      <TouchableOpacity style={styles.headerWrite}>
+        <Ionicons name="ios-create" size={30} />
       </TouchableOpacity>
     </View>
   );
@@ -58,15 +63,30 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white"
   },
-  header: {
-    paddingTop: 20,
-    flexDirection: "row"
-  },
-  Text: {
-    fontSize: 20,
+  headerBack: {
+    flex: 1,
     marginLeft: 10
+  },
+  headerWrite: {
+    flex: 1,
+    alignItems: "flex-end",
+    marginRight: 10
   },
   contentsContainer: {
     paddingTop: 20
+  },
+  headerContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderBottomWidth: 1,
+    justifyContent: "space-between",
+    paddingBottom: 10
+  },
+  titleContainer: {
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  title: {
+    fontSize: 25
   }
 });

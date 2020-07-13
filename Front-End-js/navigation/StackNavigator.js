@@ -6,6 +6,7 @@ import MyDiaryScreen from "../screens/MyDiaryScreen";
 import UrDiaryScreen from "../screens/UrDiaryScreen";
 import MyPageScreen from "../screens/MyPageScreen";
 import DetailScreen from "../screens/DetailScreen";
+import WriteScreen from "../screens/WriteScreeen";
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
@@ -23,6 +24,25 @@ export function TabOneNavigator() {
   );
 }
 
+const DetailStack = createStackNavigator();
+
+export function DetailNavigator() {
+  return (
+    <DetailStack.Navigator>
+      <DetailStack.Screen
+        name="DetailScreen"
+        component={DetailScreen}
+        options={navOptionHandler}
+      />
+      <DetailStack.Screen
+        name="WriteScreen"
+        component={WriteScreen}
+        options={navOptionHandler}
+      />
+    </DetailStack.Navigator>
+  );
+}
+
 const TabTwoStack = createStackNavigator();
 
 export function TabTwoNavigator() {
@@ -36,6 +56,11 @@ export function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="DetailScreen"
         component={DetailScreen}
+        options={navOptionHandler}
+      />
+      <TabTwoStack.Screen
+        name="WriteScreen"
+        component={WriteScreen}
         options={navOptionHandler}
       />
     </TabTwoStack.Navigator>

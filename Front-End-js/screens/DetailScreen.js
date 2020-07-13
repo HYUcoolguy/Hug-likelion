@@ -6,7 +6,8 @@ import {
   View,
   TouchableOpacity,
   SafeAreaView,
-  Dimensions
+  Dimensions,
+  ScrollView
 } from "react-native";
 import NullScreen from "./NullScreen";
 import { Ionicons, Entypo, AntDesign } from "@expo/vector-icons";
@@ -35,7 +36,7 @@ export default class DetailScreen extends React.Component {
                 <Text>감정 나열</Text>
               </View>
             </View>
-            <View style={styles.diaryContainer}>
+            <ScrollView style={styles.diaryContainer}>
               <Text>{posts.title}</Text>
               <Text>{posts.date}</Text>
               <Text>
@@ -44,7 +45,7 @@ export default class DetailScreen extends React.Component {
                 })}
               </Text>
               <Text>{posts.content}</Text>
-            </View>
+            </ScrollView>
           </View>
         ) : (
           <NullScreen />
@@ -68,7 +69,12 @@ const Header = ({ navigation }) => {
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Hug</Text>
       </View>
-      <TouchableOpacity style={styles.headerWrite}>
+      <TouchableOpacity
+        style={styles.headerWrite}
+        onPress={() => {
+          navigation.navigate("WriteScreen");
+        }}
+      >
         <Ionicons name="ios-create" size={30} />
       </TouchableOpacity>
     </View>

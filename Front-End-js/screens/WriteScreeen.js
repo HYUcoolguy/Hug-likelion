@@ -7,6 +7,8 @@ import {
   Dimensions,
   TextInput
 } from "react-native";
+import ColorSelector from "../component/ColorSelector";
+import EmotionSelector from "../component/EmotionSelector";
 
 const { width, height } = Dimensions.get("window");
 
@@ -17,20 +19,20 @@ export default function WriteScreen() {
       <View style={styles.writeContainer}>
         <View style={styles.todayColor}>
           <Text>오늘 나의 색은?</Text>
-          <View style={styles.colorBox}></View>
         </View>
+        <ColorSelector />
         <View style={styles.EmotionTable}></View>
         <View style={styles.detailEmotionTable}></View>
         <View style={styles.writePart}>
           <TextInput
             style={styles.diaryTitleContainer}
-            placeholder="제목을 입력하세요"
+            placeholder="#hash #tag"
             placeholderTextColor="gray"
             returnKeyType="done"
           />
           <TextInput
             style={styles.diaryContentsContainer}
-            placeholder="오늘의 심리를 기록해보세요"
+            placeholder="오늘의 마음은 어떤가요?"
             placeholderTextColor="gray"
             multiline={true}
           />

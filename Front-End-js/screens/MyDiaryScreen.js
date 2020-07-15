@@ -35,7 +35,7 @@ export default class MyDiaryScreen extends React.Component {
       ]
     };
   }
-
+  //scrollView 자리에 일기 유/무에 따라 toggle 작업 해야함
   render() {
     const { posts, selectedDate } = this.state;
     const { navigation } = this.props;

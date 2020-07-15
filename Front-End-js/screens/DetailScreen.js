@@ -11,7 +11,6 @@ import {
 } from "react-native";
 import NullScreen from "./NullScreen";
 import { Ionicons, Entypo, AntDesign } from "@expo/vector-icons";
-import symbolicateStackTrace from "react-native/Libraries/Core/Devtools/symbolicateStackTrace";
 
 const { width, height } = Dimensions.get("window");
 
@@ -64,10 +63,10 @@ const Header = ({ navigation }) => {
           navigation.goBack();
         }}
       >
-        <Ionicons name="ios-arrow-back" size={30} />
+        <Ionicons name="ios-arrow-back" size={25} />
       </TouchableOpacity>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>Hug</Text>
+        <Text style={styles.title}>나의 일기</Text>
       </View>
       <TouchableOpacity
         style={styles.headerWrite}
@@ -75,7 +74,7 @@ const Header = ({ navigation }) => {
           navigation.navigate("WriteScreen");
         }}
       >
-        <Ionicons name="ios-create" size={30} />
+        <Ionicons name="ios-create" size={25} />
       </TouchableOpacity>
     </View>
   );

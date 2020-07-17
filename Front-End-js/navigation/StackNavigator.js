@@ -7,6 +7,11 @@ import UrDiaryScreen from "../screens/UrDiaryScreen";
 import MyPageScreen from "../screens/MyPageScreen";
 import DetailScreen from "../screens/DetailScreen";
 import WriteScreen from "../screens/WriteScreeen";
+import Log from "../mypage_detail_screen/Log";
+import Scrap from "../mypage_detail_screen/Scrap";
+import Nowadays_emotion from "../mypage_detail_screen/Nowadays_emotion";
+import Nickname from "../mypage_detail_screen/Nickname";
+import Subscribe from "../mypage_detail_screen/Subscribe";
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
@@ -89,6 +94,31 @@ export function TabFourNavigator() {
       <TabFourStack.Screen
         name="TabFourScreen"
         component={MyPageScreen}
+        options={navOptionHandler}
+      />
+      <TabFourStack.Screen
+        name="Log"
+        component={Log}
+        options={navOptionHandler}
+      />
+      <TabFourStack.Screen
+        name="Scrap"
+        component={Scrap}
+        options={navOptionHandler}
+      />
+      <TabFourStack.Screen
+        name="Nowadays_emotion"
+        component={Nowadays_emotion}
+        options={navOptionHandler}
+      />
+      <TabFourStack.Screen
+        name="Nickname"
+        component={Nickname}
+        options={navOptionHandler}
+      />
+      <TabFourStack.Screen
+        name="Subscribe"
+        component={Subscribe}
         options={navOptionHandler}
       />
     </TabFourStack.Navigator>

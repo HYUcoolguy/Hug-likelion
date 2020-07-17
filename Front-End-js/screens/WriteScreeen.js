@@ -8,7 +8,6 @@ import {
   TextInput
 } from "react-native";
 import ColorSelector from "../component/ColorSelector";
-import EmotionSelector from "../component/EmotionSelector";
 
 const { width, height } = Dimensions.get("window");
 

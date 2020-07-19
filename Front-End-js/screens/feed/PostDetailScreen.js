@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import NullScreen from "../NullScreen";
-// import ViewPager from '@react-native-community/viewpager';
+import ViewPager from '@react-native-community/viewpager';
 
 import {
   StyleSheet,
@@ -12,6 +12,8 @@ import {
   Image,
   Dimensions,
 } from "react-native";
+import { FlatList } from "react-native-gesture-handler";
+import { Container } from "native-base";
 
 export default class PostDetailScreen extends React.Component {
   render() {
@@ -22,19 +24,41 @@ export default class PostDetailScreen extends React.Component {
       <SafeAreaView style={styles.container}>
         <Header navigation={navigation} />
         {post ? (
-          <View style>
+          <ViewPager style={styles.viewPager} initialPage={0}>
+            {/* <FlatList
+              data={post.imagesURI}
+              renderItem={({ item }) => (
+                <View style={styles.page}>
+                  <Text>{item}</Text>
+                  <Image 
+                    source= {{
+                      uri: item,
+                    }}
+                    style={styles.page}/>
+                </View>
+              )}
+              keyExtractor={( index ) => index}/> */}
+            <View style={styles.page} key="1">
+              <Image 
+                source= {{
+                  uri: post.imagesURI[0],
+                }}
+                style={styles.image}/>
+            </View>
+            <View style={styles.page} key="2">
             <Image 
-              source= {{
-                uri: post.thumnailURI,
-              }}
-              style={styles.thumnail}
-            />
-            <Text style={styles.subtitle}>
-              {post.subtitle}
-            </Text>
-            <Text>{post.numOfLike} {post.numOfPlay}</Text>
-          </View>
-          
+                source= {{
+                  uri: post.imagesURI[1],
+                }}
+                style={styles.image}/>
+            </View>
+          </ViewPager>
+          // <View>
+          //   <Text style={styles.subtitle}>
+          //     {post.subtitle}
+          //   </Text>
+          //   <Text>{post.numOfLike} {post.numOfPlay}</Text>  
+          // </View>       
         ) : (
           <NullScreen />
         )}
@@ -66,9 +90,19 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white"
   },
+  viewPager: {
+    flex: 1,
+    marginTop: 10,
+    maxHeight: width,
+    maxWidth: width,
+  },
+  page: {
+    alignItems: 'center',
+  },
   headerContainer: {
     flexDirection: "row",
     marginLeft: 10,
+    marginTop: 5,
   },
   backButtonText: {
     fontSize: 20,
@@ -79,7 +113,7 @@ const styles = StyleSheet.create({
     fontSize: 50,
     margin: 10,
   },
-  thumnail: {
+  image: {
     height: width,
     width: width,
   }

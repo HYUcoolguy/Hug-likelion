@@ -18,6 +18,7 @@ export default function PostItem({post}) {
       />
       <Text>{post.subtitle}</Text> 
       <Text>{post.numOfLike} {post.numOfPlay}</Text>
+      <Text>{post.type}</Text>
       
     </View>
   );

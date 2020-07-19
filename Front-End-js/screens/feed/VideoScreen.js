@@ -30,13 +30,9 @@ export default class VideoScreen extends React.Component {
             "subtitle": "subtitle1",
             "numOfLike": "none",
             "numOfPlay": "none",
-            "images": [
-            {
-              uri: ""
-            },
-            {
-              uri: ""
-            },
+            "imagesURI": [
+              "https://i.ibb.co/m5KVYjf/image.png",
+              "https://i.ibb.co/m5KVYjf/image.png"
             ],
           },
           {
@@ -45,13 +41,9 @@ export default class VideoScreen extends React.Component {
             "subtitle": "subtitle1",
             "numOfLike": "none",
             "numOfPlay": "none",
-            "images": [
-            {
-              uri: ""
-            },
-            {
-              uri: ""
-            },
+            "imagesURI": [
+              "https://i.ibb.co/m5KVYjf/image.png",
+              "https://i.ibb.co/m5KVYjf/image.png"
             ],
           },
           {
@@ -60,13 +52,9 @@ export default class VideoScreen extends React.Component {
             "subtitle": "subtitle1",
             "numOfLike": "none",
             "numOfPlay": "none",
-            "images": [
-            {
-              uri: ""
-            },
-            {
-              uri: ""
-            },
+            "imagesURI": [
+              "https://i.ibb.co/m5KVYjf/image.png",
+              "https://i.ibb.co/m5KVYjf/image.png"
             ],
           }
         ]

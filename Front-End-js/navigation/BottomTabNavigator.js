@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import * as React from "react";
 
 import {
-  TabOneNavigator,
+  FeedTabNavigator,
   TabTwoNavigator,
   TabThreeNavigator,
   TabFourNavigator
@@ -17,7 +17,7 @@ export default function BottomTabNavigator() {
     <BottomTab.Navigator initialRouteName="피드">
       <BottomTab.Screen
         name="피드"
-        component={TabOneNavigator}
+        component={FeedTabNavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <Entypo name="video" color={color} size={23} />

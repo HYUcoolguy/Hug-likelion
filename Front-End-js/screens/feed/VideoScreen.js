@@ -4,41 +4,70 @@ import {
   SafeAreaView, 
   Text, 
   View,
-  ScrollView,
-  SectionList, 
-  FlatList,
-  unstable_enableLogBox } from "react-native";
-import { Container, Tab, Tabs } from "native-base";
-import PostItem from './post_item';
+  Image, 
+  ActivityIndicator,
+  FlatList, } from "react-native";
+import { Tab, Tabs } from "native-base";
+import PostItem from './PostItem';
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-export default class App extends React.Component {
+export default class VideoScreen extends React.Component {
   constructor(props) {
     super(props);
-    // data loading
-    // 여러 속성들을 가지고 있는 객체들의 배열에 저장
+    // https://i.ibb.co/m5KVYjf/image.png  
     this.state = {
+      data: [],
+      imageURL: "",
+      isLoading: true,
       userId:"none",
-      posts:[
+      allPosts:[
       {
         title: "title1",
         horizontalPosts:[
           {
-            "imageURL": "none",
+            "type": "photo",
+            "thumnailURI": "https://i.ibb.co/m5KVYjf/image.png",
             "subtitle": "subtitle1",
             "numOfLike": "none",
             "numOfPlay": "none",
+            "images": [
+            {
+              uri: ""
+            },
+            {
+              uri: ""
+            },
+            ],
           },
           {
-            "imageURL": "none",
-            "subtitle": "subtitle2",
+            "type": "photo",
+            "thumnailURI": "https://i.ibb.co/m5KVYjf/image.png",
+            "subtitle": "subtitle1",
             "numOfLike": "none",
             "numOfPlay": "none",
+            "images": [
+            {
+              uri: ""
+            },
+            {
+              uri: ""
+            },
+            ],
           },
           {
-            "imageURL": "none",
-            "subtitle": "subtitle3",
+            "type": "photo",
+            "thumnailURI": "https://i.ibb.co/m5KVYjf/image.png",
+            "subtitle": "subtitle1",
             "numOfLike": "none",
-            "numOfPlay": "none",  
+            "numOfPlay": "none",
+            "images": [
+            {
+              uri: ""
+            },
+            {
+              uri: ""
+            },
+            ],
           }
         ]
       },
@@ -46,19 +75,25 @@ export default class App extends React.Component {
         title: "title2",
         horizontalPosts:[
           {
-            "imageURL": "none",
+            "type": "video",
+            "thumnailURL": "",
+            "videoURL": "",
             "subtitle": "subtitle1",
             "numOfLike": "none",
             "numOfPlay": "none",
           },
           {
-            "imageURL": "none",
+            "type": "video",
+            "thumnailURL": "",
+            "videoURL": "",
             "subtitle": "subtitle2",
             "numOfLike": "none",
             "numOfPlay": "none",
           },
           {
-            "imageURL": "none",
+            "type": "video",
+            "thumnailURL": "",
+            "videoURL": "",
             "subtitle": "subtitle3",
             "numOfLike": "none",
             "numOfPlay": "none",
@@ -67,55 +102,107 @@ export default class App extends React.Component {
       }
       ]
     }
-    
+  }
+  componentDidMount() {
+    fetch('https://reactnative.dev/movies.json')
+        .then((response) => response.json())
+        .then((json) => {
+          this.setState({ data: json.movies });
+        })
+        .catch((error) => console.error(error))
+        .finally(() => {
+          this.setState({ isLoading: false });
+        });
   }
   render() {
+    const { navigation } = this.props;
     return (
-        <SafeAreaView style={styles.tabContainer}>
-        <Tabs tabBarUnderlineStyle={{backgroundColor:'black'}} >
-          <Tab heading='추천' 
-                tabStyle={styles.tabText} 
-                activeTabStyle={styles.tabText} 
-                activeTextStyle={styles.tabText} 
-                textStyle={styles.tabText}>
-            {/* 영상 썸네일, url, 제목, 부제목을 하나의 js로 뽑아서 Flatlist로 출력 */}
-            {/* <SectionList
-              sections={this.state.posts}
-              renderItem={this._makePostItem}
-              renderSectionHeader={({ section }) => (
-                <Text>{section.title}</Text>
-              )}
-              keyExtractor={(item, index) => index}
-            /> */}
-            <FlatList
-                data={this.state.posts}
+      <SafeAreaView style={styles.tabContainer}>
+      <Tabs style={styles.tab} tabBarUnderlineStyle={{backgroundColor:'black'}} >
+        <Tab heading='추천' 
+          tabStyle={styles.tabText} 
+          activeTabStyle={styles.tabText} 
+          activeTextStyle={styles.tabText} 
+          textStyle={styles.tabText}>
+          {/* fetch api 사용법 */}
+          <View style={{ flex: 1, padding: 24 }}>
+            {this.state.isLoading ? 
+              <ActivityIndicator/> : (
+              <FlatList
+                data={this.state.data}
+                keyExtractor={({ id }) => id}
                 renderItem={({ item }) => (
-                  <View>
-                    <Text style={styles.postTitle}>{item.title}</Text>
-                    <FlatList
-                        data={item.horizontalPosts}
-                        renderItem={this._makePostItem}
-                        keyExtractor={(item, index) => index}
-                        horizontal={true}
-                    />
-                  </View>
+                  <Text>{item.title}, {item.releaseYear}</Text>
                 )}
-                keyExtractor={(item, index) => index}
               />
-          </Tab>
-          <Tab heading='구독' 
-                tabStyle={styles.tabText} 
-                activeTabStyle={styles.tabText} 
-                activeTextStyle={styles.tabText} 
-                textStyle={styles.tabText}/>
-        </Tabs>
-        </SafeAreaView>
+            )}
+          </View>
+          
+          {/* 영상 썸네일, url, 제목, 부제목을 하나의 js로 뽑아서 Flatlist로 출력 */}
+          <FlatList
+            data={this.state.allPosts}
+            // renderItem={this._makePostItem}
+            renderItem = {
+              ({ item }) => {
+                return (
+                  <View>
+                  <Text style={styles.postTitle}>{item.title}</Text>
+                  <FlatList
+                    data={item.horizontalPosts}
+                    renderItem={({ item }) => (
+                      <TouchableOpacity
+                        onPress={() => {
+                          navigation.navigate("PostDetailScreen", {
+                            post: item
+                          });
+                        }}>
+                        <PostItem post={item}/>
+                      </TouchableOpacity>
+                    )}
+                    keyExtractor={( index ) => index}
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={false}
+                  />
+                </View>
+                )
+              }
+            }
+            keyExtractor={(item, index) => index}
+          />
+        </Tab>
+        <Tab heading='구독' 
+              tabStyle={styles.tabText} 
+              activeTabStyle={styles.tabText} 
+              activeTextStyle={styles.tabText} 
+              textStyle={styles.tabText}/>
+      </Tabs>
+      </SafeAreaView>
     );
   }
 
-  _makePostItem= ({ item, index }) => {
+  // renderItem에 함수 넣는법, key: navigation
+  _makePostItem= ({ item }) => {
     return (
-      <PostItem post={item}/>
+      <View>
+      <Text style={styles.postTitle}>{item.title}</Text>
+      <FlatList
+        data={item.horizontalPosts}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("PostDetailScreen", {
+                posts: item
+              });
+            }}>
+            <PostItem post={item}/>
+          </TouchableOpacity>
+          
+        )}
+        keyExtractor={( index ) => index}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+      />
+    </View>
     )
   }
 };
@@ -125,6 +212,8 @@ const styles = StyleSheet.create({
     tabContainer: {
       flex:1,
       backgroundColor:'white', // 시간, 배터리 배경
+    },
+    tab: {
     },
     tabText: {
       fontSize:20,
@@ -138,3 +227,12 @@ const styles = StyleSheet.create({
       marginTop:10,
     },
   });
+
+{/* <SectionList
+  sections={this.state.posts}
+  renderItem={this._makePostItem}
+  renderSectionHeader={({ section }) => (
+    <Text>{section.title}</Text>
+  )}
+  keyExtractor={(item, index) => index}
+/> */}

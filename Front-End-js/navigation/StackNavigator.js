@@ -2,6 +2,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
 
 import VideoScreen from "../screens/feed/VideoScreen";
+import PostDetailScreen from "../screens/feed/PostDetailScreen";
 import MyDiaryScreen from "../screens/MyDiaryScreen";
 import UrDiaryScreen from "../screens/UrDiaryScreen";
 import MyPageScreen from "../screens/MyPageScreen";
@@ -11,12 +12,17 @@ import DetailScreen from "../screens/DetailScreen";
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
 const TabOneStack = createStackNavigator();
 
-export function TabOneNavigator() {
+export function FeedTabNavigator() {
   return (
     <TabOneStack.Navigator>
       <TabOneStack.Screen
-        name="TabOneScreen"
+        name="FeedTabScreen"
         component={VideoScreen}
+        options={navOptionHandler}
+      />
+      <TabTwoStack.Screen
+        name="PostDetailScreen"
+        component={PostDetailScreen}
         options={navOptionHandler}
       />
     </TabOneStack.Navigator>

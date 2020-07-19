@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
+    "@react-native-community/viewpager": "3.3.0",
     "@react-navigation/bottom-tabs": "^5.6.1",
     "@react-navigation/drawer": "^5.8.4",
     "@react-navigation/material-bottom-tabs": "^5.2.12",
@@ -28,7 +29,8 @@
     "react-native-safe-area-context": "^3.0.2",
     "react-native-screens": "~2.9.0",
     "react-native-vector-icons": "^6.6.0",
-    "react-native-web": "~0.11.7"
+    "react-native-web": "~0.11.7",
+    "viewpager": "0.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",

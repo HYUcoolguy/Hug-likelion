@@ -8,37 +8,44 @@ import {
   TextInput
 } from "react-native";
 import ColorSelector from "../component/ColorSelector";
-
+import HashTagMaker from "../component/HashTagMaker";
 const { width, height } = Dimensions.get("window");
 
-export default function WriteScreen() {
-  return (
-    <SafeAreaView style={styles.container}>
-      <Header />
-      <View style={styles.writeContainer}>
-        <View style={styles.todayColor}>
-          <Text>오늘 나의 색은?</Text>
+export default class WriteScreen extends React.Component {
+  render() {
+    this.state = {
+      text: "",
+      emails: []
+    };
+    return (
+      <SafeAreaView style={styles.container}>
+        <Header />
+        <View style={styles.writeContainer}>
+          <View style={styles.todayColor}>
+            <Text>오늘 나의 색은?</Text>
+          </View>
+          <ColorSelector />
+          <View style={styles.EmotionTable}></View>
+          <View style={styles.writePart}>
+            <HashTagMaker />
+            <TextInput
+              style={styles.diaryTitleContainer}
+              placeholder="#hash #tag"
+              placeholderTextColor="gray"
+              returnKeyType="done"
+            />
+
+            <TextInput
+              style={styles.diaryContentsContainer}
+              placeholder="오늘의 마음은 어떤가요?"
+              placeholderTextColor="gray"
+              multiline={true}
+            />
+          </View>
         </View>
-        <ColorSelector />
-        <View style={styles.EmotionTable}></View>
-        <View style={styles.detailEmotionTable}></View>
-        <View style={styles.writePart}>
-          <TextInput
-            style={styles.diaryTitleContainer}
-            placeholder="#hash #tag"
-            placeholderTextColor="gray"
-            returnKeyType="done"
-          />
-          <TextInput
-            style={styles.diaryContentsContainer}
-            placeholder="오늘의 마음은 어떤가요?"
-            placeholderTextColor="gray"
-            multiline={true}
-          />
-        </View>
-      </View>
-    </SafeAreaView>
-  );
+      </SafeAreaView>
+    );
+  }
 }
 
 const Header = () => {
@@ -87,6 +94,7 @@ const styles = StyleSheet.create({
     backgroundColor: "skyblue"
   },
   EmotionTable: {
+    flexDirection: "row",
     backgroundColor: "#FAEBD7",
     padding: 5,
     margin: 5

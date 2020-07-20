@@ -17,6 +17,18 @@ export default class MyDiaryScreen extends React.Component {
     super(props);
     this.state = {
       selectedDate: "",
+      /*posts:[
+        {
+          id
+          title
+          hashes
+          content
+          date
+          emotions
+          tColor
+        }
+      ]
+*/
       posts: [
         {
           id: 1,

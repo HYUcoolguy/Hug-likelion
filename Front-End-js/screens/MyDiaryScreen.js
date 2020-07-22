@@ -24,25 +24,29 @@ export default class MyDiaryScreen extends React.Component {
           hashes
           content
           date
-          emotions
-          tColor
+          marked : boolean
+          dotColor : string
         }
       ]
 */
       posts: [
         {
           id: 1,
-          title: "6월 24일의 감정상태",
+          title: "7월 16일의 감정상태",
           hashes: ["기쁘다", "왜냐면", "치킨먹어서"],
           content: "본문",
-          date: "2020-06-24"
+          date: "2020-07-16",
+          marked: true,
+          dotColor: "red"
         },
         {
           id: 2,
-          title: "6월 23일의 감정상태",
+          title: "7월 17일의 감정상태",
           hashes: ["행복하다", "왜냐면", "풀업성공해서"],
           content: "본문",
-          date: "2020-06-23"
+          date: "2020-07-17",
+          marked: true,
+          dotColor: "blue"
         }
       ]
     };
@@ -60,6 +64,7 @@ export default class MyDiaryScreen extends React.Component {
               this.setState({ selectedDate: day });
             }}
             current={new Date()}
+            markedDates={this.dateMarking}
           />
           <ScrollView>
             <FlatList

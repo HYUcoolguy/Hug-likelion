@@ -1,21 +1,32 @@
 import * as React from "react";
 import { Text, View, StyleSheet } from "react-native";
-import TagInput from "react-native-tag-input";
+import Tags from "react-native-tags";
 
 export default class HashTagMaker extends React.Component {
-  state = {
-    emails: [],
-    text: ""
-  };
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+    console.log(this._reactInternalFiber);
     return (
-      <TagInput
-        value={this.state.emails}
-        onChange={(emails) => this.setState({ emails })}
-        labelExtractor={(email) => email}
-        text={this.state.text}
-        onChangeText={(text) => this.setState({ text })}
+      <Tags
+        initialTags={["오늘의 기분"]}
+        style={styles.diaryHashContainer}
+        inputStyle={{ backgroundColor: "white" }}
+        maxNumberOfTags={8}
+        onChangeTags={(tagUpdate) => {
+          console.log(tagUpdate);
+        }}
       />
     );
   }
 }
+const styles = StyleSheet.create({
+  diaryHashContainer: {
+    borderBottomColor: "black",
+    borderBottomWidth: 1,
+    padding: 20,
+    marginRight: 20
+  }
+});

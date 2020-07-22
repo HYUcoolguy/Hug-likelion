@@ -27,14 +27,8 @@ export default class WriteScreen extends React.Component {
           <ColorSelector />
           <View style={styles.EmotionTable}></View>
           <View style={styles.writePart}>
+            <Text>#tags:</Text>
             <HashTagMaker />
-            <TextInput
-              style={styles.diaryTitleContainer}
-              placeholder="#hash #tag"
-              placeholderTextColor="gray"
-              returnKeyType="done"
-            />
-
             <TextInput
               style={styles.diaryContentsContainer}
               placeholder="오늘의 마음은 어떤가요?"
@@ -105,16 +99,10 @@ const styles = StyleSheet.create({
     margin: 5
   },
   writePart: {
-    backgroundColor: "#8FBC8F",
+    backgroundColor: "#C0C0C0",
     margin: 5,
     padding: 5,
-    height: height / 2
-  },
-  diaryTitleContainer: {
-    borderBottomColor: "black",
-    borderBottomWidth: 1,
-    padding: 20,
-    marginRight: 20
+    height: height
   },
   diaryContentsContainer: {
     padding: 20,

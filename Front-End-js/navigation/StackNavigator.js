@@ -1,10 +1,12 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
 
-import VideoScreen from "../screens/feed/VideoScreen";
-import PostDetailScreen from "../screens/feed/PostDetailScreen";
+import FeedMainScreen from "../screens/feed/FeedMainScreen";
+import FeedDetailScreen from "../screens/feed/FeedDetailScreen";
 import MyDiaryScreen from "../screens/MyDiaryScreen";
-import UrDiaryScreen from "../screens/UrDiaryScreen";
+import UrDiaryMainScreen from "../screens/UrDiary/UrDiaryMainScreen";
+import UrDiaryDeatilScreen from "../screens/UrDiary/UrDiaryDeatilScreen"
+
 import MyPageScreen from "../screens/MyPageScreen";
 import DetailScreen from "../screens/DetailScreen";
 
@@ -17,12 +19,12 @@ export function FeedTabNavigator() {
     <TabOneStack.Navigator>
       <TabOneStack.Screen
         name="FeedTabScreen"
-        component={VideoScreen}
+        component={FeedMainScreen}
         options={navOptionHandler}
       />
       <TabTwoStack.Screen
-        name="PostDetailScreen"
-        component={PostDetailScreen}
+        name="FeedDetailScreen"
+        component={FeedDetailScreen}
         options={navOptionHandler}
       />
     </TabOneStack.Navigator>
@@ -54,8 +56,13 @@ export function TabThreeNavigator() {
   return (
     <TabThreeStack.Navigator>
       <TabThreeStack.Screen
-        name="TabThreeScreen"
-        component={UrDiaryScreen}
+        name="UrDiaryMainScreen"
+        component={UrDiaryMainScreen}
+        options={navOptionHandler}
+      />
+      <TabThreeStack.Screen
+        name="UrDiaryDeatilScreen"
+        component={UrDiaryDeatilScreen}
         options={navOptionHandler}
       />
     </TabThreeStack.Navigator>

@@ -7,7 +7,7 @@ import {
   Image
 } from 'react-native';
 
-export default function PostItem({post}) { 
+export default function FeedItem({post}) { 
   return (
     <View style={styles.itemcontainer}>
       <Image 

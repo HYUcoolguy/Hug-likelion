@@ -8,7 +8,8 @@ import {
   TextInput
 } from "react-native";
 import ColorSelector from "../component/ColorSelector";
-import HashTagMaker from "../component/HashTagMaker";
+import HashTagMaker2 from "../component/HashTag";
+import { ButtonGroup } from "react-native-elements";
 const { width, height } = Dimensions.get("window");
 
 export default class WriteScreen extends React.Component {
@@ -27,8 +28,7 @@ export default class WriteScreen extends React.Component {
           <ColorSelector />
           <View style={styles.EmotionTable}></View>
           <View style={styles.writePart}>
-            <Text>#tags:</Text>
-            <HashTagMaker />
+            <HashTagMaker2 />
             <TextInput
               style={styles.diaryContentsContainer}
               placeholder="오늘의 마음은 어떤가요?"

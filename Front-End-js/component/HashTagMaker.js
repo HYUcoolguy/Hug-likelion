@@ -1,14 +1,16 @@
 import * as React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import Tags from "react-native-tags";
-
-export default class HashTagMaker extends React.Component {
+//react-native-tags-input로 파일 만들어서
+export default class HashTagMaker1 extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      tags: []
+    };
   }
 
   render() {
-    console.log(this._reactInternalFiber);
     return (
       <Tags
         initialTags={["오늘의 기분"]}

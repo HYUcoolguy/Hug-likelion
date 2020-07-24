@@ -9,15 +9,12 @@ import {
 } from "react-native";
 import ColorSelector from "../component/ColorSelector";
 import HashTagMaker2 from "../component/HashTag";
-import { ButtonGroup } from "react-native-elements";
+import MultipleButton from "../component/MultipleButton";
+
 const { width, height } = Dimensions.get("window");
 
 export default class WriteScreen extends React.Component {
   render() {
-    this.state = {
-      text: "",
-      emails: []
-    };
     return (
       <SafeAreaView style={styles.container}>
         <Header />
@@ -27,6 +24,7 @@ export default class WriteScreen extends React.Component {
           </View>
           <ColorSelector />
           <View style={styles.EmotionTable}></View>
+          <MultipleButton />
           <View style={styles.writePart}>
             <HashTagMaker2 />
             <TextInput

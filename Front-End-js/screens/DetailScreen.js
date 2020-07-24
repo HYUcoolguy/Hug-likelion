@@ -5,10 +5,14 @@ import {
   Text,
   View,
   TouchableOpacity,
-  SafeAreaView
+  SafeAreaView,
+  Dimensions,
+  ScrollView
 } from "react-native";
 import NullScreen from "./NullScreen";
 import { Ionicons, Entypo, AntDesign } from "@expo/vector-icons";
+
+const { width, height } = Dimensions.get("window");
 
 export default class DetailScreen extends React.Component {
   render() {
@@ -18,16 +22,29 @@ export default class DetailScreen extends React.Component {
     return (
       <SafeAreaView style={styles.container}>
         <Header navigation={navigation} />
+        <View style={styles.calendarNav}>
+          <Text>calendar Navigation Part</Text>
+        </View>
         {posts ? (
           <View style={styles.contentsContainer}>
-            <Text>{posts.title}</Text>
-            <Text>{posts.date}</Text>
-            <Text>
-              {posts.hashes.map((hash) => {
-                return `#${hash} `;
-              })}
-            </Text>
-            <Text>{posts.content}</Text>
+            <View style={styles.todayMind}>
+              <View style={styles.MindTitle}>
+                <Text>오늘의 감정 part</Text>
+              </View>
+              <View style={styles.MindDetail}>
+                <Text>감정 나열</Text>
+              </View>
+            </View>
+            <ScrollView style={styles.diaryContainer}>
+              <Text>{posts.title}</Text>
+              <Text>{posts.date}</Text>
+              <Text>
+                {posts.hashes.map((hash) => {
+                  return `#${hash} `;
+                })}
+              </Text>
+              <Text>{posts.content}</Text>
+            </ScrollView>
           </View>
         ) : (
           <NullScreen />
@@ -39,15 +56,25 @@ export default class DetailScreen extends React.Component {
 
 const Header = ({ navigation }) => {
   return (
-    <View>
+    <View style={styles.headerContainer}>
       <TouchableOpacity
-        style={styles.header}
+        style={styles.headerBack}
         onPress={() => {
           navigation.goBack();
         }}
       >
-        <Ionicons name="ios-arrow-back" size={30} />
-        <Text style={styles.Text}>Back</Text>
+        <Ionicons name="ios-arrow-back" size={25} />
+      </TouchableOpacity>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>나의 일기</Text>
+      </View>
+      <TouchableOpacity
+        style={styles.headerWrite}
+        onPress={() => {
+          navigation.navigate("WriteScreen");
+        }}
+      >
+        <Ionicons name="ios-create" size={25} />
       </TouchableOpacity>
     </View>
   );
@@ -58,15 +85,59 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white"
   },
-  header: {
-    paddingTop: 20,
-    flexDirection: "row"
+  contentsContainer: {
+    margin: 15,
+    padding: 20,
+    height: height,
+    backgroundColor: "#F0F8FF"
   },
-  Text: {
-    fontSize: 20,
+  headerContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderBottomWidth: 1,
+    borderBottomColor: "gray",
+    justifyContent: "space-between",
+    paddingBottom: 10
+  },
+  headerBack: {
+    flex: 1,
     marginLeft: 10
   },
-  contentsContainer: {
-    paddingTop: 20
+  headerWrite: {
+    flex: 1,
+    alignItems: "flex-end",
+    marginRight: 10
+  },
+  titleContainer: {
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  title: {
+    fontSize: 25
+  },
+  calendarNav: {
+    marginTop: 15,
+    marginLeft: 15,
+    marginRight: 15,
+    backgroundColor: "yellow"
+  },
+  todayMind: {
+    backgroundColor: "#FAEBD7",
+    margin: 5,
+    padding: 5
+  },
+  MindTitle: {
+    backgroundColor: "#7FFFD4",
+    margin: 5
+  },
+  MindDetail: {
+    backgroundColor: "#00FFFF",
+    margin: 5
+  },
+  diaryContainer: {
+    backgroundColor: "#8FBC8F",
+    margin: 5,
+    padding: 5,
+    height: height
   }
 });

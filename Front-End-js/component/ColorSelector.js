@@ -5,20 +5,7 @@ import { ColorPicker } from "react-native-status-color-picker";
 
 export default class ColorSelector extends React.Component {
   state = {
-    colors: [
-      "#F44336",
-      "#9C27B0",
-      "#3F51B5",
-      "#2196F3",
-      "#009688",
-      "#4CAF50",
-      "#FFEB3B",
-      "#FFC107",
-      "#FF9800",
-      "#795548",
-      "#9E9E9E",
-      "#607D8B"
-    ],
+    colors: ["#F44336", "#9C27B0", "#3F51B5", "#FFEB3B", "#9E9E9E"],
     selectedColor: "#F44336"
   };
 

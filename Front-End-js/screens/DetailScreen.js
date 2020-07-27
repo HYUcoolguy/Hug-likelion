@@ -18,10 +18,10 @@ export default class DetailScreen extends React.Component {
   render() {
     const { route, navigation } = this.props;
     const { posts } = route.params;
-
+    console.log(posts);
     return (
       <SafeAreaView style={styles.container}>
-        <Header navigation={navigation} />
+        <Header navigation={navigation} posts={posts} />
         <View style={styles.calendarNav}>
           <Text>calendar Navigation Part</Text>
         </View>
@@ -29,10 +29,14 @@ export default class DetailScreen extends React.Component {
           <View style={styles.contentsContainer}>
             <View style={styles.todayMind}>
               <View style={styles.MindTitle}>
-                <Text>오늘의 감정 part</Text>
+                <Text>오늘의 감정</Text>
               </View>
               <View style={styles.MindDetail}>
-                <Text>감정 나열</Text>
+                <Text>
+                  {posts.emotions.map((emotion) => {
+                    return `${emotion} `;
+                  })}
+                </Text>
               </View>
             </View>
             <ScrollView style={styles.diaryContainer}>
@@ -54,7 +58,7 @@ export default class DetailScreen extends React.Component {
   }
 }
 
-const Header = ({ navigation }) => {
+const Header = ({ navigation, posts }) => {
   return (
     <View style={styles.headerContainer}>
       <TouchableOpacity
@@ -71,7 +75,7 @@ const Header = ({ navigation }) => {
       <TouchableOpacity
         style={styles.headerWrite}
         onPress={() => {
-          navigation.navigate("WriteScreen");
+          navigation.navigate("WriteScreen", { data: posts });
         }}
       >
         <Ionicons name="ios-create" size={25} />
@@ -127,11 +131,9 @@ const styles = StyleSheet.create({
     padding: 5
   },
   MindTitle: {
-    backgroundColor: "#7FFFD4",
     margin: 5
   },
   MindDetail: {
-    backgroundColor: "#00FFFF",
     margin: 5
   },
   diaryContainer: {

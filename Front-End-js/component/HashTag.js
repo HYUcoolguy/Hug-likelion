@@ -30,7 +30,7 @@ export default class HashTagMaker2 extends React.Component {
         updateState={this.updateTagState}
         tags={this.state.tags}
         placeholder="Tags..."
-        label="Press comma & space to add a tag"
+        label="해시태그 & enter to add a tag"
         labelStyle={{ color: "black" }}
         leftElement={
           <Icon

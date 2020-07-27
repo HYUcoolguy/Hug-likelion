@@ -5,8 +5,10 @@ import {
   Text,
   SafeAreaView,
   Dimensions,
-  TextInput
+  TextInput,
+  TouchableOpacity
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import ColorSelector from "../component/ColorSelector";
 import HashTagMaker2 from "../component/HashTag";
 import MultipleButton from "../component/MultipleButton";
@@ -15,37 +17,52 @@ const { width, height } = Dimensions.get("window");
 
 export default class WriteScreen extends React.Component {
   render() {
+    const { navigation, route } = this.props;
     return (
       <SafeAreaView style={styles.container}>
-        <Header />
-        <View style={styles.writeContainer}>
-          <View style={styles.todayColor}>
-            <Text>오늘 나의 색은?</Text>
+        <Header navigation={navigation} />
+        {route.params ? (
+          <View>
+            <Text>만들어야함</Text>
           </View>
-          <ColorSelector />
-          <View style={styles.EmotionTable}></View>
-          <MultipleButton />
-          <View style={styles.writePart}>
-            <HashTagMaker2 />
-            <TextInput
-              style={styles.diaryContentsContainer}
-              placeholder="오늘의 마음은 어떤가요?"
-              placeholderTextColor="gray"
-              multiline={true}
-            />
+        ) : (
+          <View style={styles.writeContainer}>
+            <View style={styles.todayColor}>
+              <Text>오늘 나의 색은?</Text>
+            </View>
+            <ColorSelector />
+            <MultipleButton />
+            <View style={styles.writePart}>
+              <HashTagMaker2 />
+              <TextInput
+                style={styles.diaryContentsContainer}
+                placeholder="오늘의 마음은 어떤가요?"
+                placeholderTextColor="gray"
+                multiline={true}
+              />
+            </View>
           </View>
-        </View>
+        )}
       </SafeAreaView>
     );
   }
 }
 
-const Header = () => {
+const Header = ({ navigation }) => {
   return (
     <View style={styles.headerContainer}>
+      <TouchableOpacity
+        style={styles.headerBack}
+        onPress={() => {
+          navigation.goBack();
+        }}
+      >
+        <Ionicons name="ios-arrow-back" size={25} />
+      </TouchableOpacity>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>나의 일기</Text>
       </View>
+      <View style={styles.header_right}></View>
     </View>
   );
 };
@@ -57,18 +74,28 @@ const styles = StyleSheet.create({
     paddingTop: 90
   },
   headerContainer: {
+    flexDirection: "row",
     alignItems: "center",
     borderBottomWidth: 1,
     borderBottomColor: "gray",
     justifyContent: "space-between",
     paddingBottom: 10
   },
+  headerBack: {
+    flex: 1,
+    marginLeft: 10
+  },
   titleContainer: {
+    flex: 1,
     justifyContent: "center",
     alignItems: "center"
   },
   title: {
     fontSize: 25
+  },
+  header_right: {
+    flex: 1,
+    marginRight: 10
   },
   writeContainer: {
     margin: 15,
@@ -77,7 +104,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#F0F8FF"
   },
   todayColor: {
-    backgroundColor: "#FAEBD7",
     margin: 5,
     padding: 5
   },

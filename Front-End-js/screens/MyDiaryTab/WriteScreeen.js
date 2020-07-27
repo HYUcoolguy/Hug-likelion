@@ -9,9 +9,9 @@ import {
   TouchableOpacity
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import ColorSelector from "../component/ColorSelector";
-import HashTagMaker2 from "../component/HashTag";
-import MultipleButton from "../component/MultipleButton";
+import ColorSelector from "../../component/ColorSelector";
+import HashTagMaker2 from "../../component/HashTag";
+import MultipleButton from "../../component/MultipleButton";
 
 const { width, height } = Dimensions.get("window");
 

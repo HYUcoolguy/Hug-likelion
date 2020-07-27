@@ -2,11 +2,11 @@ import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
 
 import VideoScreen from "../screens/VideoScreen";
-import MyDiaryScreen from "../screens/MyDiaryScreen";
+import MyDiaryScreen from "../screens/MyDiaryTab/MyDiaryScreen";
 import UrDiaryScreen from "../screens/UrDiaryScreen";
 import MyPageScreen from "../screens/MyPageScreen";
-import DetailScreen from "../screens/DetailScreen";
-import WriteScreen from "../screens/WriteScreeen";
+import DetailScreen from "../screens/MyDiaryTab/DetailScreen";
+import WriteScreen from "../screens/MyDiaryTab/WriteScreeen";
 import Log from "../screens/mypage_detail_screen/Log";
 import Scrap from "../screens/mypage_detail_screen/Scrap";
 import Nowadays_emotion from "../screens/mypage_detail_screen/Nowadays_emotion";

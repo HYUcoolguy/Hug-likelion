@@ -9,7 +9,7 @@ import {
   Dimensions,
   ScrollView
 } from "react-native";
-import NullScreen from "./NullScreen";
+import NullScreen from "../NullScreen";
 import { Ionicons, Entypo, AntDesign } from "@expo/vector-icons";
 
 const { width, height } = Dimensions.get("window");

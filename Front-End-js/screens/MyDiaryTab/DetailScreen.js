@@ -18,7 +18,7 @@ export default class DetailScreen extends React.Component {
   render() {
     const { route, navigation } = this.props;
     const { posts } = route.params;
-    console.log(posts);
+
     return (
       <SafeAreaView style={styles.container}>
         <Header navigation={navigation} posts={posts} />
@@ -33,7 +33,10 @@ export default class DetailScreen extends React.Component {
               </View>
               <View style={styles.MindDetail}>
                 <Text>
-                  {posts.emotions.map((emotion) => {
+                  {posts.emotions1.map((emotion) => {
+                    return `${emotion} `;
+                  })}
+                  {posts.emotions2.map((emotion) => {
                     return `${emotion} `;
                   })}
                 </Text>

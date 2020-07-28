@@ -24,6 +24,14 @@ export default class HashTagMaker2 extends React.Component {
     });
   };
 
+  componentDidMount() {
+    if (this.props.hashes !== undefined) {
+      const { hashes } = this.props;
+      const { tagsArray } = this.state.tags;
+      const typedHashes = tagsArray.concat(hashes);
+      this.setState({ tags: { tag: "", tagsArray: typedHashes } });
+    }
+  }
   render() {
     return (
       <TagInput

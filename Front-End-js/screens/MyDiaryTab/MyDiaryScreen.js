@@ -37,9 +37,10 @@ export default class MyDiaryScreen extends React.Component {
           hashes: ["슬프다", "왜냐면", "치킨 못 먹어서"],
           content: "본문",
           date: "2020-07-16",
-          emotions: ["실망", "좌절", "무기력"],
+          emotions1: ["실망", "좌절"],
+          emotions2: ["무기력"],
           marked: true,
-          dotColor: "red"
+          dotColor: "#3F51B5"
         },
         {
           id: 2,
@@ -47,14 +48,15 @@ export default class MyDiaryScreen extends React.Component {
           hashes: ["우울하다", "왜냐면", "이별해서"],
           content: "본문",
           date: "2020-07-17",
-          emotions: ["상처", "외로움", "무기력"],
+          emotions1: ["상처"],
+          emotions2: ["외로움", "무기력"],
           marked: true,
-          dotColor: "blue"
+          dotColor: "#9C27B0"
         }
       ]
     };
   }
-  //scrollView 자리에 일기 유/무에 따라 toggle 작업 해야함
+
   render() {
     const { posts, selectedDate } = this.state;
     const { navigation } = this.props;

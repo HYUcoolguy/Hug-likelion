@@ -22,8 +22,24 @@ export default class WriteScreen extends React.Component {
       <SafeAreaView style={styles.container}>
         <Header navigation={navigation} />
         {route.params ? (
-          <View>
-            <Text>만들어야함</Text>
+          <View style={styles.writeContainer}>
+            <View style={styles.todayColor}>
+              <Text>오늘 나의 색은?</Text>
+            </View>
+            <ColorSelector color={route.params.data.dotColor} />
+            <MultipleButton
+              button1={route.params.data.emotions1}
+              buttons2={route.params.data.emotions2}
+            />
+            <View style={styles.writePart}>
+              <HashTagMaker2 hashes={route.params.data.hashes} />
+              <TextInput
+                style={styles.diaryContentsContainer}
+                placeholder="오늘의 마음은 어떤가요?"
+                placeholderTextColor="gray"
+                multiline={true}
+              />
+            </View>
           </View>
         ) : (
           <View style={styles.writeContainer}>

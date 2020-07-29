@@ -7,6 +7,12 @@ import { color } from "react-native-reanimated";
 export default class ColorSelector extends React.Component {
   constructor(props) {
     super(props);
+    this._colorRenderFunc();
+  }
+
+  onSelect = (color) => this.setState({ selectedColor: color });
+
+  _colorRenderFunc = () => {
     if (this.props.color !== undefined) {
       this.state = {
         colors: ["#F44336", "#9C27B0", "#3F51B5", "#FFEB3B", "#9E9E9E"],
@@ -18,9 +24,7 @@ export default class ColorSelector extends React.Component {
         selectedColor: "#F44336"
       };
     }
-  }
-
-  onSelect = (color) => this.setState({ selectedColor: color });
+  };
 
   render() {
     return (

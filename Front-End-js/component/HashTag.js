@@ -8,14 +8,7 @@ const mainColor = "#FFF8DC";
 export default class HashTagMaker2 extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      tags: {
-        tag: "",
-        tagsArray: []
-      },
-      tagsColor: mainColor,
-      tagsText: "black"
-    };
+    this._hashesRenderFunc();
   }
 
   updateTagState = (state) => {
@@ -24,14 +17,30 @@ export default class HashTagMaker2 extends React.Component {
     });
   };
 
-  componentDidMount() {
+  _hashesRenderFunc = () => {
     if (this.props.hashes !== undefined) {
       const { hashes } = this.props;
-      const { tagsArray } = this.state.tags;
-      const typedHashes = tagsArray.concat(hashes);
-      this.setState({ tags: { tag: "", tagsArray: typedHashes } });
+
+      this.state = {
+        tags: {
+          tag: "",
+          tagsArray: hashes
+        },
+        tagsColor: mainColor,
+        tagsText: "black"
+      };
+    } else {
+      this.state = {
+        tags: {
+          tag: "",
+          tagsArray: []
+        },
+        tagsColor: mainColor,
+        tagsText: "black"
+      };
     }
-  }
+  };
+
   render() {
     return (
       <TagInput

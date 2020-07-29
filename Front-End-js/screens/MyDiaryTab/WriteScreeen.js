@@ -18,6 +18,7 @@ const { width, height } = Dimensions.get("window");
 export default class WriteScreen extends React.Component {
   render() {
     const { navigation, route } = this.props;
+
     return (
       <SafeAreaView style={styles.container}>
         <Header navigation={navigation} />
@@ -29,7 +30,7 @@ export default class WriteScreen extends React.Component {
             <ColorSelector color={route.params.data.dotColor} />
             <MultipleButton
               button1={route.params.data.emotions1}
-              buttons2={route.params.data.emotions2}
+              button2={route.params.data.emotions2}
             />
             <View style={styles.writePart}>
               <HashTagMaker2 hashes={route.params.data.hashes} />
@@ -38,6 +39,9 @@ export default class WriteScreen extends React.Component {
                 placeholder="오늘의 마음은 어떤가요?"
                 placeholderTextColor="gray"
                 multiline={true}
+                defaultValue={
+                  route.params.data.content ? route.params.data.content : ""
+                }
               />
             </View>
           </View>

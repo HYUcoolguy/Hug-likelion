@@ -18,51 +18,55 @@ const { width, height } = Dimensions.get("window");
 export default class WriteScreen extends React.Component {
   render() {
     const { navigation, route } = this.props;
-
     return (
       <SafeAreaView style={styles.container}>
         <Header navigation={navigation} />
-        {route.params ? (
-          <View style={styles.writeContainer}>
-            <View style={styles.todayColor}>
-              <Text>오늘 나의 색은?</Text>
-            </View>
+
+        <View style={styles.writeContainer}>
+          <View style={styles.todayColor}>
+            <Text>오늘 나의 색은?</Text>
+          </View>
+          {route.params ? (
             <ColorSelector color={route.params.data.dotColor} />
+          ) : (
+            <ColorSelector />
+          )}
+          {route.params ? (
             <MultipleButton
               button1={route.params.data.emotions1}
               button2={route.params.data.emotions2}
             />
-            <View style={styles.writePart}>
-              <HashTagMaker2 hashes={route.params.data.hashes} />
-              <TextInput
-                style={styles.diaryContentsContainer}
-                placeholder="오늘의 마음은 어떤가요?"
-                placeholderTextColor="gray"
-                multiline={true}
-                defaultValue={
-                  route.params.data.content ? route.params.data.content : ""
-                }
-              />
-            </View>
-          </View>
-        ) : (
-          <View style={styles.writeContainer}>
-            <View style={styles.todayColor}>
-              <Text>오늘 나의 색은?</Text>
-            </View>
-            <ColorSelector />
+          ) : (
             <MultipleButton />
-            <View style={styles.writePart}>
-              <HashTagMaker2 />
-              <TextInput
-                style={styles.diaryContentsContainer}
-                placeholder="오늘의 마음은 어떤가요?"
-                placeholderTextColor="gray"
-                multiline={true}
-              />
-            </View>
+          )}
+
+          <View style={styles.writePart}>
+            {route.params ? (
+              <>
+                <HashTagMaker2 hashes={route.params.data.hashes} />
+                <TextInput
+                  style={styles.diaryContentsContainer}
+                  placeholder="오늘의 마음은 어떤가요?"
+                  placeholderTextColor="gray"
+                  multiline={true}
+                  defaultValue={
+                    route.params.data.content ? route.params.data.content : ""
+                  }
+                />
+              </>
+            ) : (
+              <>
+                <HashTagMaker2 />
+                <TextInput
+                  style={styles.diaryContentsContainer}
+                  placeholder="오늘의 마음은 어떤가요?"
+                  placeholderTextColor="gray"
+                  multiline={true}
+                />
+              </>
+            )}
           </View>
-        )}
+        </View>
       </SafeAreaView>
     );
   }

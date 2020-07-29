@@ -10,13 +10,13 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Calendar, CalendarList, Agenda } from "react-native-calendars";
-import DetailScreen from "./DetailScreen";
 
 export default class MyDiaryScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       selectedDate: "",
+      marked: null,
       /*posts:[
         {
           id : uuid
@@ -69,7 +69,6 @@ export default class MyDiaryScreen extends React.Component {
               this.setState({ selectedDate: day });
             }}
             current={new Date()}
-            markedDates={this.dateMarking}
           />
           <ScrollView>
             <FlatList

@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import NullScreen from "../NullScreen";
-import DiaryItem from "./UrDiaryItem"
 
 import {
   StyleSheet,
@@ -15,12 +14,18 @@ import {
 
 export default class UrDiaryDeatilScreen extends React.Component {
   render() {
+    const { route, navigation } = this.props;
+    const { post } = route.params;
+
     return (
       <SafeAreaView style={styles.container}>
         <Header navigation={navigation} />
         {post ? (
           <View>
-            <Text>asdf</Text>
+            <Text>{post.userId}</Text> 
+            <Text>{post.uploadTime}</Text>
+            <Text>{post.contents}</Text>
+            <Text>{post.numOfLike}</Text>
           </View>
         ) : (
           <NullScreen />

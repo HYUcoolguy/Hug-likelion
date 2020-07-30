@@ -97,11 +97,6 @@ export function TabFourNavigator() {
         options={navOptionHandler}
       />
       <TabFourStack.Screen
-        name="Log"
-        component={Log}
-        options={navOptionHandler}
-      />
-      <TabFourStack.Screen
         name="Scrap"
         component={Scrap}
         options={navOptionHandler}

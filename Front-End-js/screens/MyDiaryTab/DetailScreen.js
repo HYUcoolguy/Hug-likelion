@@ -22,9 +22,6 @@ export default class DetailScreen extends React.Component {
     return (
       <SafeAreaView style={styles.container}>
         <Header navigation={navigation} posts={posts} />
-        <View style={styles.calendarNav}>
-          <Text>calendar Navigation Part</Text>
-        </View>
         {posts ? (
           <View style={styles.contentsContainer}>
             <View style={styles.todayMind}>

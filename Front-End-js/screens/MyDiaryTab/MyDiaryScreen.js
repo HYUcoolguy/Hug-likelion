@@ -16,7 +16,16 @@ export default class MyDiaryScreen extends React.Component {
     super(props);
     this.state = {
       selectedDate: "",
-      marked: null,
+      markedDate: {
+        "2020-07-16": {
+          marked: true,
+          dotColor: "#3F51B5"
+        },
+        "2020-07-17": {
+          marked: true,
+          dotColor: "#9C27B0"
+        }
+      },
       /*posts:[
         {
           id : uuid
@@ -29,6 +38,9 @@ export default class MyDiaryScreen extends React.Component {
           dotColor : string
         }
       ]
+
+      markedDate를 직접 입력하지 않고, posts 데이터 값만 갖고 세팅할 수 있는가 고민
+      markedDate를 state값으로 하지 않고 render 이후 그냥 변수에 할당할 수 없을지 생각
 */
       posts: [
         {
@@ -58,8 +70,9 @@ export default class MyDiaryScreen extends React.Component {
   }
 
   render() {
-    const { posts, selectedDate } = this.state;
+    const { posts, selectedDate, markedDate } = this.state;
     const { navigation } = this.props;
+    this._setMarkedDates({ posts });
     return (
       <SafeAreaView style={styles.container}>
         <Header navigation={navigation} />
@@ -69,6 +82,7 @@ export default class MyDiaryScreen extends React.Component {
               this.setState({ selectedDate: day });
             }}
             current={new Date()}
+            markedDates={markedDate}
           />
           <ScrollView>
             <FlatList
@@ -115,6 +129,18 @@ export default class MyDiaryScreen extends React.Component {
       </SafeAreaView>
     );
   }
+
+  _setMarkedDates = ({ posts }) => {
+    let obj = posts.reduce((acc, post) => {
+      console.log(post);
+      return Object.assign(acc, {
+        [post.date]: {
+          marked: String(post.marked),
+          dotColor: String(post.dotColor)
+        }
+      });
+    }, {});
+  };
 }
 
 const Header = ({ navigation }) => {

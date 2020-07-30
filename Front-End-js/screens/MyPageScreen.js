@@ -36,15 +36,6 @@ const MyPageNav = ({ navigation }) => {
     <View style={styles.navContainer}>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("Log");
-        }}
-        style={styles.tabContainer}
-      >
-        <Text style={styles.tabText}>최근 본 게시물</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        onPress={() => {
           navigation.navigate("Scrap");
         }}
         style={styles.tabContainer}

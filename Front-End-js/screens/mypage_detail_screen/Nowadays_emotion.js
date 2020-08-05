@@ -8,12 +8,37 @@ import {
   TextInput
 } from "react-native";
 
-export default function Nowadays_emotion() {
-  return (
-    <SafeAreaView style={styles.container}>
-      <Header />
-    </SafeAreaView>
-  );
+export default class Nowadays_emotion extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      /*
+      emotionData: [
+        {
+          date: string
+          dotColor: string
+        }
+      ]
+      */
+      emotionData: [
+        {
+          date: "2020-07-16",
+          dotColor: "#3F51B5"
+        },
+        {
+          date: "2020-7-17",
+          dotColor: "#9C27B0"
+        }
+      ]
+    };
+  }
+  render() {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Header />
+      </SafeAreaView>
+    );
+  }
 }
 
 const Header = () => {

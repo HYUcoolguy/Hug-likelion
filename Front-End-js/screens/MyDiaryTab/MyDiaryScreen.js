@@ -15,7 +15,6 @@ export default class MyDiaryScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedDate: "",
       markedDate: {
         "2020-07-16": {
           marked: true,
@@ -33,7 +32,8 @@ export default class MyDiaryScreen extends React.Component {
           hashes : array
           content : string
           date : string
-          emotions : array
+          emotions1 : array
+          emotions2 : array
           marked : boolean
           dotColor : string
         }
@@ -93,8 +93,8 @@ export default class MyDiaryScreen extends React.Component {
                 return (
                   <TouchableOpacity
                     onPress={() => {
-                      navigation.navigate("DetailScreen", {
-                        posts: item
+                      navigation.navigate("WriteScreen", {
+                        data: item
                       });
                       this.setState({ selectedDate: "" });
                     }}
@@ -132,7 +132,6 @@ export default class MyDiaryScreen extends React.Component {
 
   _setMarkedDates = ({ posts }) => {
     let obj = posts.reduce((acc, post) => {
-      console.log(post);
       return Object.assign(acc, {
         [post.date]: {
           marked: String(post.marked),

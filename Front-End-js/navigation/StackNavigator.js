@@ -29,25 +29,6 @@ export function TabOneNavigator() {
   );
 }
 
-const DetailStack = createStackNavigator();
-
-export function DetailNavigator() {
-  return (
-    <DetailStack.Navigator>
-      <DetailStack.Screen
-        name="DetailScreen"
-        component={DetailScreen}
-        options={navOptionHandler}
-      />
-      <DetailStack.Screen
-        name="WriteScreen"
-        component={WriteScreen}
-        options={navOptionHandler}
-      />
-    </DetailStack.Navigator>
-  );
-}
-
 const TabTwoStack = createStackNavigator();
 
 export function TabTwoNavigator() {
@@ -56,11 +37,6 @@ export function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={MyDiaryScreen}
-        options={navOptionHandler}
-      />
-      <TabTwoStack.Screen
-        name="DetailScreen"
-        component={DetailScreen}
         options={navOptionHandler}
       />
       <TabTwoStack.Screen

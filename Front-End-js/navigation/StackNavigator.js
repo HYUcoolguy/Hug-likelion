@@ -78,11 +78,6 @@ export function TabFourNavigator() {
         options={navOptionHandler}
       />
       <TabFourStack.Screen
-        name="Nowadays_emotion"
-        component={Nowadays_emotion}
-        options={navOptionHandler}
-      />
-      <TabFourStack.Screen
         name="Nickname"
         component={Nickname}
         options={navOptionHandler}

@@ -9,6 +9,8 @@ import {
   FlatList, } from "react-native";
 import { Tab, Tabs } from "native-base";
 import UrDiaryItem from "./UrDiaryItem"
+import UrDiaryItemFooter from "./UrDiaryItemFooter"
+import GrayDivider from "../GrayDivider"
 import NullScreen from "../NullScreen";
 
 export default class UrDiaryMainScreen extends React.Component{
@@ -24,27 +26,190 @@ export default class UrDiaryMainScreen extends React.Component{
       ],
       // 인기 게시물 : 좋아요&댓글 특정 이상인 게시물
       // 최근 게시물 : 최근 시간으로 정렬한 게시물
-      // 나의 게시물 : 나의 userId와 일치한 게시물
       posts: [  
         {
           userId:1,
+          postId:1,
           nickname:"나는야코딩왕",
           sex:"male",
           uploadTime:"2020-07-30/12-10-10", // YY-MM-DD/HH-MM-SS
           contents:"what do you do for fun?",
           numOfLike:100,
-          comments:["hi1","hi2","hello1","hello2"],
+          numOfComments: 100,
           isValid:true,
+          comments:[
+            { 
+              userId: "1",
+              sex: "male",
+              uploadTime: "yesterday",
+              comment: "안녕하세요 반갑습니다 안녕히가세요 감사합니다 오랜만이네요",
+              nickname: "세상은아름답다",
+            },
+            { 
+              userId: "2",
+              sex: "female",
+              uploadTime: "today",
+              comment: "hi2",
+              nickname: "오늘뭐먹지",
+            },{ 
+              userId: "1",
+              sex: "male",
+              uploadTime: "yesterday",
+              comment: "안녕하세요 반갑습니다 안녕히가세요 감사합니다 오랜만이네요",
+              nickname: "세상은아름답다",
+            },
+            { 
+              userId: "2",
+              sex: "female",
+              uploadTime: "today",
+              comment: "hi2",
+              nickname: "오늘뭐먹지",
+            },{ 
+              userId: "1",
+              sex: "male",
+              uploadTime: "yesterday",
+              comment: "안녕하세요 반갑습니다 안녕히가세요 감사합니다 오랜만이네요",
+              nickname: "세상은아름답다",
+            },
+            { 
+              userId: "2",
+              sex: "female",
+              uploadTime: "today",
+              comment: "hi2",
+              nickname: "오늘뭐먹지",
+            },{ 
+              userId: "1",
+              sex: "male",
+              uploadTime: "yesterday",
+              comment: "안녕하세요 반갑습니다 안녕히가세요 감사합니다 오랜만이네요",
+              nickname: "세상은아름답다",
+            },
+            { 
+              userId: "2",
+              sex: "female",
+              uploadTime: "today",
+              comment: "hi2",
+              nickname: "오늘뭐먹지",
+            },{ 
+              userId: "1",
+              sex: "male",
+              uploadTime: "yesterday",
+              comment: "안녕하세요 반갑습니다 안녕히가세요 감사합니다 오랜만이네요",
+              nickname: "세상은아름답다",
+            },
+            { 
+              userId: "2",
+              sex: "female",
+              uploadTime: "today",
+              comment: "hi2",
+              nickname: "오늘뭐먹지",
+            },{ 
+              userId: "1",
+              sex: "male",
+              uploadTime: "yesterday",
+              comment: "안녕하세요 반갑습니다 안녕히가세요 감사합니다 오랜만이네요",
+              nickname: "세상은아름답다",
+            },
+            { 
+              userId: "2",
+              sex: "female",
+              uploadTime: "today",
+              comment: "hi2",
+              nickname: "오늘뭐먹지",
+            },{ 
+              userId: "1",
+              sex: "male",
+              uploadTime: "yesterday",
+              comment: "안녕하세요 반갑습니다 안녕히가세요 감사합니다 오랜만이네요",
+              nickname: "세상은아름답다",
+            },
+            { 
+              userId: "2",
+              sex: "female",
+              uploadTime: "today",
+              comment: "hi2",
+              nickname: "오늘뭐먹지",
+            },{ 
+              userId: "1",
+              sex: "male",
+              uploadTime: "yesterday",
+              comment: "안녕하세요 반갑습니다 안녕히가세요 감사합니다 오랜만이네요",
+              nickname: "세상은아름답다",
+            },
+            { 
+              userId: "2",
+              sex: "female",
+              uploadTime: "today",
+              comment: "hi2",
+              nickname: "오늘뭐먹지",
+            },{ 
+              userId: "1",
+              sex: "male",
+              uploadTime: "yesterday",
+              comment: "안녕하세요 안녕하세요 안녕하세요 반갑습니다 안녕히가세요 감사합니다 오랜만이네요",
+              nickname: "세상은아름답다",
+            },
+            { 
+              userId: "2",
+              sex: "female",
+              uploadTime: "today",
+              comment: "hi2",
+              nickname: "오늘뭐먹지",
+            },{ 
+              userId: "1",
+              sex: "male",
+              uploadTime: "yesterday",
+              comment: "안녕하세요 반갑습니다 안녕히가세요 감사합니다 오랜만이네요",
+              nickname: "세상은아름답다",
+            },
+            { 
+              userId: "2",
+              sex: "female",
+              uploadTime: "today",
+              comment: "hi2",
+              nickname: "오늘뭐먹지",
+            },{ 
+              userId: "1",
+              sex: "male",
+              uploadTime: "yesterday",
+              comment: "안녕하세요 반갑습니다 안녕히가세요 감사합니다 오랜만이네요",
+              nickname: "세상은아름답다",
+            },
+            { 
+              userId: "2",
+              sex: "female",
+              uploadTime: "today",
+              comment: "hi2",
+              nickname: "오늘뭐먹지",
+            },
+          ],
         },
         {
           userId:2,
+          postId:2,
           nickname:"멋쟁이사자처럼",
           sex:"female",
           uploadTime:"2020-07-29/12-10-10", // YY-MM-DD/HH-MM-SS
           contents:"how's it going?",
           numOfLike:20,
-          comments:["hi3","hi4"],
+          numOfComments: 200,
           isValid:true,
+          comments:[
+            { 
+              userId: "3",
+              sex: "male",
+              uploadTime: "yesterday",
+              comment: "hi3",
+              nickname: "댓글1",
+            },
+            { 
+              userId: "4",
+              sex: "female",
+              uploadTime: "today",
+              comment: "hi4",
+              nickname: "댓글2"
+            },
+          ],
         },
       ],
     };
@@ -60,41 +225,38 @@ export default class UrDiaryMainScreen extends React.Component{
           activeTextStyle={styles.tabText} 
           textStyle={styles.tabText}>
           <View>
-            <View>
-              {this.state.userRule.map((item, key) => (
-                <UserRule
-                  key={item.category_name}
-                  onClickFunction={this._updateLayout.bind(this, key)}
-                  item={item}
-                />
-              ))}
-            </View>
+            {this.state.userRule.map((item, key) => (
+              <UserRule
+                key={item.category_name}
+                onClickFunction={this._updateLayout.bind(this, key)}
+                item={item}
+              />
+            ))}
           </View>
           <FlatList
               data={this.state.posts}
               keyExtractor={({ uid }) => uid}
               renderItem={({ item }) => (
-                <TouchableOpacity
-                  onPress={() => {
-                    navigation.navigate("UrDiaryDeatilScreen", {
-                      post: item
-                    });
-                  }}>
-                  <UrDiaryItem post={item}/>
-                </TouchableOpacity> 
+                <View>
+                  <TouchableOpacity
+                    onPress={() => {
+                      navigation.navigate("UrDiaryDeatilScreen", {
+                        post: item
+                      });
+                    }}>
+                    <UrDiaryItem post={item}/>
+                  </TouchableOpacity> 
+                  <UrDiaryItemFooter numOfLike={item.numOfLike} numOfComments={item.numOfComments}/>
+                  <GrayDivider/>
+                </View>
               )}
             />
         </Tab>
         <Tab heading='최신' 
-              tabStyle={styles.tabText} 
-              activeTabStyle={styles.tabText} 
-              activeTextStyle={styles.tabText} 
-              textStyle={styles.tabText}/>
-        <Tab heading='내 글' 
-              tabStyle={styles.tabText} 
-              activeTabStyle={styles.tabText} 
-              activeTextStyle={styles.tabText} 
-              textStyle={styles.tabText}/>
+          tabStyle={styles.tabText} 
+          activeTabStyle={styles.tabText} 
+          activeTextStyle={styles.tabText} 
+          textStyle={styles.tabText}/>
       </Tabs>
       </SafeAreaView>
     );

@@ -15,6 +15,7 @@ export default class MyDiaryScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      selectedDate: "",
       markedDate: {
         "2020-07-16": {
           marked: true,
@@ -72,7 +73,7 @@ export default class MyDiaryScreen extends React.Component {
   render() {
     const { posts, selectedDate, markedDate } = this.state;
     const { navigation } = this.props;
-    this._setMarkedDates({ posts });
+
     return (
       <SafeAreaView style={styles.container}>
         <Header navigation={navigation} />
@@ -129,17 +130,6 @@ export default class MyDiaryScreen extends React.Component {
       </SafeAreaView>
     );
   }
-
-  _setMarkedDates = ({ posts }) => {
-    let obj = posts.reduce((acc, post) => {
-      return Object.assign(acc, {
-        [post.date]: {
-          marked: String(post.marked),
-          dotColor: String(post.dotColor)
-        }
-      });
-    }, {});
-  };
 }
 
 const Header = ({ navigation }) => {

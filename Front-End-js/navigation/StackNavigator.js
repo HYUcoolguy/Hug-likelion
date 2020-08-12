@@ -7,9 +7,7 @@ import UrDiaryScreen from "../screens/UrDiaryScreen";
 import MyPageScreen from "../screens/MyPageScreen";
 import DetailScreen from "../screens/MyDiaryTab/DetailScreen";
 import WriteScreen from "../screens/MyDiaryTab/WriteScreeen";
-import Log from "../screens/mypage_detail_screen/Log";
 import Scrap from "../screens/mypage_detail_screen/Scrap";
-import Nowadays_emotion from "../screens/mypage_detail_screen/Nowadays_emotion";
 import Nickname from "../screens/mypage_detail_screen/Nickname";
 import Subscribe from "../screens/mypage_detail_screen/Subscribe";
 

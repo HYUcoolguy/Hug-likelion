@@ -44,7 +44,7 @@ export default class Grid extends React.Component {
               </View>
             );
           }}
-          numColumns={2}
+          numColumns={1}
           keyExtractor={(item, index) => index}
         />
       </View>

@@ -45,20 +45,11 @@ const MyPageNav = ({ navigation }) => {
 
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("Nowadays_emotion");
+          navigation.navigate("Account");
         }}
         style={styles.tabContainer}
       >
-        <Text style={styles.tabText}>최근 나의 온도</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("Nickname");
-        }}
-        style={styles.tabContainer}
-      >
-        <Text style={styles.tabText}>닉네임 설정</Text>
+        <Text style={styles.tabText}>계정 관리</Text>
       </TouchableOpacity>
 
       <TouchableOpacity

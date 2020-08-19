@@ -8,7 +8,7 @@ import MyPageScreen from "../screens/MyPageScreen";
 import DetailScreen from "../screens/MyDiaryTab/DetailScreen";
 import WriteScreen from "../screens/MyDiaryTab/WriteScreeen";
 import Scrap from "../screens/mypage_detail_screen/Scrap";
-import Nickname from "../screens/mypage_detail_screen/Nickname";
+import Account from "../screens/mypage_detail_screen/Account";
 import Subscribe from "../screens/mypage_detail_screen/Subscribe";
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
@@ -76,8 +76,8 @@ export function TabFourNavigator() {
         options={navOptionHandler}
       />
       <TabFourStack.Screen
-        name="Nickname"
-        component={Nickname}
+        name="Account"
+        component={Account}
         options={navOptionHandler}
       />
       <TabFourStack.Screen

@@ -24,7 +24,7 @@
     "react-native-color-palette": "^2.2.0",
     "react-native-elements": "^2.0.4",
     "react-native-gesture-handler": "~1.6.0",
-    "react-native-paper": "^3.10.1",
+    "react-native-paper": "^3.11.0",
     "react-native-reanimated": "~1.9.0",
     "react-native-safe-area-context": "^3.0.2",
     "react-native-screens": "~2.9.0",
@@ -34,7 +34,7 @@
     "react-native-tag-input": "0.0.21",
     "react-native-tags": "^2.1.0",
     "react-native-tags-input": "^1.0.10",
-    "react-native-vector-icons": "^6.6.0",
+    "react-native-vector-icons": "^6.7.0",
     "react-native-web": "~0.11.7"
   },
   "devDependencies": {

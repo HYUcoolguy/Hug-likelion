@@ -67,6 +67,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     height: 150,
-    backgroundColor: "pink"
+    backgroundColor: "#F0F8FF"
   }
 });

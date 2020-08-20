@@ -10,6 +10,7 @@ import WriteScreen from "../screens/MyDiaryTab/WriteScreeen";
 import Scrap from "../screens/mypage_detail_screen/Scrap";
 import Account from "../screens/mypage_detail_screen/Account";
 import Subscribe from "../screens/mypage_detail_screen/Subscribe";
+import NickName from "../screens/account_manage_detail/NickName";
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
@@ -83,6 +84,11 @@ export function TabFourNavigator() {
       <TabFourStack.Screen
         name="Subscribe"
         component={Subscribe}
+        options={navOptionHandler}
+      />
+      <TabFourStack.Screen
+        name="NickName"
+        component={NickName}
         options={navOptionHandler}
       />
     </TabFourStack.Navigator>

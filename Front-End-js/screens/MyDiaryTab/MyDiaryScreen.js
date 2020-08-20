@@ -103,7 +103,6 @@ export default class MyDiaryScreen extends React.Component {
                     <View style={styles.postContainer}>
                       <View style={styles.postHeader}>
                         <Text>쓴 글</Text>
-                        <View />
                       </View>
                       <Text style={styles.textContainer}>
                         제목 : {item.title}
@@ -184,10 +183,14 @@ const styles = StyleSheet.create({
   },
   calendar_diary: {},
   postContainer: {
-    paddingTop: 10
+    backgroundColor: "#F0F8FF",
+    margin: 10,
+    marginTop: 30,
+    padding: 20,
+    borderRadius: 10
   },
   textContainer: {
-    paddingTop: 5
+    marginTop: 10
   },
   postHeader: {
     flexDirection: "row"

@@ -11,6 +11,10 @@ import Scrap from "../screens/mypage_detail_screen/Scrap";
 import Account from "../screens/mypage_detail_screen/Account";
 import Subscribe from "../screens/mypage_detail_screen/Subscribe";
 import NickName from "../screens/account_manage_detail/NickName";
+import Birth from "../screens/account_manage_detail/Birth";
+import Sex from "../screens/account_manage_detail/Sex";
+import Email from "../screens/account_manage_detail/Email";
+import PhoneNumber from "../screens/account_manage_detail/PhoneNumber";
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
@@ -89,6 +93,26 @@ export function TabFourNavigator() {
       <TabFourStack.Screen
         name="NickName"
         component={NickName}
+        options={navOptionHandler}
+      />
+      <TabFourStack.Screen
+        name="Birth"
+        component={Birth}
+        options={navOptionHandler}
+      />
+      <TabFourStack.Screen
+        name="Sex"
+        component={Sex}
+        options={navOptionHandler}
+      />
+      <TabFourStack.Screen
+        name="Email"
+        component={Email}
+        options={navOptionHandler}
+      />
+      <TabFourStack.Screen
+        name="PhoneNumber"
+        component={PhoneNumber}
         options={navOptionHandler}
       />
     </TabFourStack.Navigator>

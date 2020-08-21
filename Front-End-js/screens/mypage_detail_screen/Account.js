@@ -37,7 +37,12 @@ export default class Account extends React.Component {
                 style={styles.iconContainer}
               />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.detailComponent}>
+            <TouchableOpacity
+              style={styles.detailComponent}
+              onPress={() => {
+                navigation.navigate("Birth");
+              }}
+            >
               <View>
                 <Text>생년월일</Text>
                 <Text style={styles.textContainer}>1996.12.25</Text>
@@ -48,7 +53,12 @@ export default class Account extends React.Component {
                 style={styles.iconContainer}
               />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.detailComponent}>
+            <TouchableOpacity
+              style={styles.detailComponent}
+              onPress={() => {
+                navigation.navigate("Sex");
+              }}
+            >
               <View>
                 <Text>성별</Text>
                 <Text style={styles.textContainer}>남성</Text>
@@ -62,7 +72,12 @@ export default class Account extends React.Component {
           </View>
           <View style={styles.contactContainer}>
             <Text>연락처 정보</Text>
-            <TouchableOpacity style={styles.detailComponent}>
+            <TouchableOpacity
+              style={styles.detailComponent}
+              onPress={() => {
+                navigation.navigate("Email");
+              }}
+            >
               <View>
                 <Text>이메일</Text>
                 <Text style={styles.textContainer}>
@@ -75,7 +90,12 @@ export default class Account extends React.Component {
                 style={styles.iconContainer}
               />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.detailComponent}>
+            <TouchableOpacity
+              style={styles.detailComponent}
+              onPress={() => {
+                navigation.navigate("PhoneNumber");
+              }}
+            >
               <View>
                 <Text>휴대전화</Text>
                 <Text style={styles.textContainer}>010-XXXX-XXXX</Text>

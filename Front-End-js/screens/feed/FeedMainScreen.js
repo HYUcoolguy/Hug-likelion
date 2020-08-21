@@ -69,6 +69,7 @@ export default class FeedMainScreen extends React.Component {
             "subtitle": "subtitle1",
             "numOfLike": "none",
             "numOfPlay": "none",
+            
           },
           {
             "type": "video",

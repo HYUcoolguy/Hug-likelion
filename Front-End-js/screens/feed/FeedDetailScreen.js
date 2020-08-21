@@ -10,6 +10,7 @@ import {
   SafeAreaView,
   Image,
   Dimensions,
+  ScrollView
 } from "react-native";
 
 import { FlatList } from "react-native-gesture-handler";
@@ -19,46 +20,44 @@ export default class FeedDetailScreen extends React.Component {
   render() {
     const { route, navigation } = this.props;
     const { post } = route.params;
-
+    let content = null;
+    if (post.type == "photo") {
+      content = 
+        <FlatList
+          data={post.imagesURI}
+          horizontal={true}
+          pagingEnable={true}
+          keyExtractor={({ id }) => id}
+          renderItem={({ item }) => (
+            <View>
+              <Image 
+                source= {{
+                  uri: item,
+                }}
+                style={styles.image}/>
+            </View>
+          )}
+        />      
+    } else if (post.type == "video") {
+      content = <Text>video</Text>
+    } else {
+      content = <Text>error</Text>
+    }
     return (
       <SafeAreaView style={styles.container}>
         <Header navigation={navigation} />
         {post ? (
-          <ViewPager style={styles.viewPager} initialPage={0}>
-            {/* <FlatList
-              data={post.imagesURI}
-              renderItem={({ item }) => (
-                <View style={styles.page}>
-                  <Text>{item}</Text>
-                  <Image 
-                    source= {{
-                      uri: item,
-                    }}
-                    style={styles.page}/>
-                </View>
-              )}
-              keyExtractor={( index ) => index}/> */}
-            <View style={styles.page} key="1">
-              <Image 
-                source= {{
-                  uri: post.imagesURI[0],
-                }}
-                style={styles.image}/>
-            </View>
-            <View style={styles.page} key="2">
-            <Image 
-                source= {{
-                  uri: post.imagesURI[1],
-                }}
-                style={styles.image}/>
-            </View>
-          </ViewPager>
-          // <View>
-          //   <Text style={styles.subtitle}>
-          //     {post.subtitle}
-          //   </Text>
-          //   <Text>{post.numOfLike} {post.numOfPlay}</Text>  
-          // </View>       
+          <View>
+            {content}
+            
+            <View>
+              <Text style={styles.subtitle}>
+                {post.subtitle}
+              </Text>
+              <Text>{post.numOfLike} {post.numOfPlay}</Text>  
+            </View>  
+          </View>
+          
         ) : (
           <NullScreen />
         )}
@@ -90,14 +89,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white"
   },
-  viewPager: {
-    flex: 1,
-    marginTop: 10,
-    maxHeight: width,
-    maxWidth: width,
-  },
   page: {
     alignItems: 'center',
+    justifyContent: 'center',
   },
   headerContainer: {
     flexDirection: "row",

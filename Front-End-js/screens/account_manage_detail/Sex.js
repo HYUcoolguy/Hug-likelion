@@ -9,6 +9,8 @@ import {
   TouchableOpacity,
   Button
 } from "react-native";
+import RadioBox from "../../component/RadioBox";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 
 export default class Sex extends React.Component {
   constructor(props) {
@@ -18,10 +20,29 @@ export default class Sex extends React.Component {
 
   render() {
     const { navigation } = this.props;
+
     return (
       <SafeAreaView style={styles.container}>
         <Header />
-        <View style={styles.contentsContainer}></View>
+        <View style={styles.contentsContainer}>
+          <View style={styles.description}>
+            <Text style={{ fontSize: 23, marginBottom: 10 }}>성별</Text>
+            <Text>
+              성별을 지정하면 나를 어떤 성별로 나타내고 싶은지 나타낼 수
+              있습니다.
+            </Text>
+          </View>
+          <RadioBox />
+          <View style={styles.buttonContainer}>
+            <Button
+              title="취소"
+              onPress={() => {
+                navigation.goBack();
+              }}
+            />
+            <Button title="저장" />
+          </View>
+        </View>
       </SafeAreaView>
     );
   }
@@ -61,5 +82,12 @@ const styles = StyleSheet.create({
     margin: 10,
     marginTop: 30,
     padding: 20
+  },
+  description: {
+    marginBottom: 40
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "flex-end"
   }
 });

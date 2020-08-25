@@ -13,17 +13,20 @@ import {
 export default class NickName extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      orgName: "Cyrano"
+    };
   }
 
   render() {
     const { navigation } = this.props;
+    const { orgName } = this.state;
     return (
       <SafeAreaView style={styles.container}>
         <Header />
         <View style={styles.nickNameContainer}>
           <Text>닉네임 변경</Text>
-          <TextInput style={styles.nickNameBox} placeholder="기존 닉네임" />
+          <Text style={styles.nickNameBox}>{orgName}</Text>
           <TextInput style={styles.nickNameBox} placeholder="새 닉네임" />
           <View style={styles.buttonContainer}>
             <Button

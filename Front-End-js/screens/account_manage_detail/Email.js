@@ -21,7 +21,26 @@ export default class Email extends React.Component {
     return (
       <SafeAreaView style={styles.container}>
         <Header />
-        <View style={styles.contentsContainer}></View>
+        <View style={styles.contentsContainer}>
+          <View style={styles.description}>
+            <Text style={{ fontSize: 23, marginBottom: 10 }}>이메일</Text>
+            <Text>Hug에 연결된 이메일 주소를 관리합니다.</Text>
+          </View>
+          <View style={styles.connectedEmail}>
+            <Text style={{ fontSize: 18, marginBottom: 10 }}>
+              Hug 연결 이메일
+            </Text>
+            <Text style={{ fontSize: 16, marginBottom: 10 }}>
+              hyulikelion@likelion.org
+            </Text>
+          </View>
+          <View style={styles.restore}>
+            <Text style={{ fontSize: 18, marginBottom: 20 }}>복구 이메일</Text>
+            <TouchableOpacity>
+              <Text style={styles.addEmailButton}>복구 이메일 추가</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </SafeAreaView>
     );
   }
@@ -58,8 +77,27 @@ const styles = StyleSheet.create({
     fontSize: 25
   },
   contentsContainer: {
-    margin: 10,
-    marginTop: 30,
+    marginTop: 30
+  },
+  description: {
+    borderBottomColor: "gray",
+    borderBottomWidth: 0.3,
+    marginBottom: 20,
+    padding: 20,
+    alignItems: "center"
+  },
+  connectedEmail: {
+    borderBottomColor: "gray",
+    borderBottomWidth: 0.5,
+    marginBottom: 20,
     padding: 20
+  },
+  restore: {
+    padding: 20,
+    borderBottomColor: "gray",
+    borderBottomWidth: 0.5
+  },
+  addEmailButton: {
+    color: "#007AFF"
   }
 });

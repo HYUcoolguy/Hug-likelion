@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Ionicons, AntDesign, FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import NullScreen from "../NullScreen";
-import YouTube from 'react-native-youtube';
+
 import {
   StyleSheet,
   Text,
@@ -39,7 +39,6 @@ export default class FeedDetailScreen extends React.Component {
     const { route, navigation } = this.props;
     const { post } = route.params;
     let content = null;
-    const YOUTUBE_API_KEY = "AIzaSyDrjIpM7RHx1vkul1KRb3iPKWGRdlJWIcc"
     
     if (post.type === "photo") {
       content = 

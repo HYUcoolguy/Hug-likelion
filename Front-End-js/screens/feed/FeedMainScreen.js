@@ -16,13 +16,12 @@ export default class FeedMainScreen extends React.Component {
     super(props);
     // https://i.ibb.co/m5KVYjf/image.png  
     this.state = {
-      data: [],
-      imageURL: "",
       isLoading: true,
+      randomMessage: [],
       userId:"none",
       allPosts:[
       {
-        title: "title1",
+        title: "따뜻한 혜민스님 말씀",
         horizontalPosts:[
           {
             "type": "photo",
@@ -38,7 +37,7 @@ export default class FeedMainScreen extends React.Component {
           {
             "type": "photo",
             "thumnailURI": "https://i.ibb.co/m5KVYjf/image.png",
-            "subtitle": "subtitle1",
+            "subtitle": "subtitle2",
             "numOfLike": "none",
             "numOfPlay": "none",
             "imagesURI": [
@@ -49,7 +48,7 @@ export default class FeedMainScreen extends React.Component {
           {
             "type": "photo",
             "thumnailURI": "https://i.ibb.co/m5KVYjf/image.png",
-            "subtitle": "subtitle1",
+            "subtitle": "subtitle3",
             "numOfLike": "none",
             "numOfPlay": "none",
             "imagesURI": [
@@ -60,42 +59,45 @@ export default class FeedMainScreen extends React.Component {
         ]
       },
       {
-        title: "title2",
+        title: "연예인들의 이야기",
         horizontalPosts:[
           {
             "type": "video",
-            "thumnailURL": "",
-            "videoURL": "",
+            "thumnailURI": "https://img.youtube.com/vi/bZBTdmAVmT4/sddefault.jpg",
+            "videoURI": "https://www.youtube.com/watch?v=bZBTdmAVmT4",
             "subtitle": "subtitle1",
             "numOfLike": "none",
             "numOfPlay": "none",
+            "videoId": "bZBTdmAVmT4",
           },
           {
             "type": "video",
-            "thumnailURL": "",
-            "videoURL": "",
+            "thumnailURI": "https://img.youtube.com/vi/Rx18dyAOjeg/sddefault.jpg",
+            "videoURI": "https://www.youtube.com/watch?v=Rx18dyAOjeg",
             "subtitle": "subtitle2",
             "numOfLike": "none",
             "numOfPlay": "none",
+            "videoId": "bZBTdmAVmT4",
           },
           {
             "type": "video",
-            "thumnailURL": "",
-            "videoURL": "",
+            "thumnailURI": "https://img.youtube.com/vi/ERul9QhSArs/sddefault.jpg",
+            "videoURI": "https://www.youtube.com/watch?v=ERul9QhSArs",
             "subtitle": "subtitle3",
             "numOfLike": "none",
             "numOfPlay": "none",
+            "videoId": "bZBTdmAVmT4",
           } 
         ]
       }
       ]
     }
   }
-  componentDidMount() {
+  componentWillMount() {
     fetch('https://reactnative.dev/movies.json')
         .then((response) => response.json())
         .then((json) => {
-          this.setState({ data: json.movies });
+          this.setState({ randomMessage: json.movies });
         })
         .catch((error) => console.error(error))
         .finally(() => {
@@ -117,7 +119,7 @@ export default class FeedMainScreen extends React.Component {
             {this.state.isLoading ? 
               <ActivityIndicator/> : (
               <FlatList
-                data={this.state.data}
+                data={this.state.randomMessage}
                 keyExtractor={({ id }) => id}
                 renderItem={({ item }) => (
                   <Text>{item.title}, {item.releaseYear}</Text>
@@ -144,7 +146,7 @@ export default class FeedMainScreen extends React.Component {
                             post: item
                           });
                         }}>
-                        <FeedItem post={item}/>
+                      <FeedItem post={item}/>
                       </TouchableOpacity>
                     )}
                     keyExtractor={( index ) => index}
@@ -213,14 +215,6 @@ const styles = StyleSheet.create({
       color:'#000',
       marginLeft:10,
       marginTop:10,
+      paddingLeft:3,
     },
   });
-
-{/* <SectionList
-  sections={this.state.posts}
-  renderItem={this._makeFeedItem}
-  renderSectionHeader={({ section }) => (
-    <Text>{section.title}</Text>
-  )}
-  keyExtractor={(item, index) => index}
-/> */}

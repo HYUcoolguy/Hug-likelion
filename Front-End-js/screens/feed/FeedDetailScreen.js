@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, AntDesign, FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import NullScreen from "../NullScreen";
-import ViewPager from '@react-native-community/viewpager';
+import YouTube from 'react-native-youtube';
 import {
   StyleSheet,
   Text,
@@ -10,23 +10,44 @@ import {
   SafeAreaView,
   Image,
   Dimensions,
-  ScrollView
+  Alert,
+  ActivityIndicator
 } from "react-native";
-
-import { FlatList } from "react-native-gesture-handler";
-import { Container } from "native-base";
+import { WebView } from 'react-native-webview';
+import { FlatList, ScrollView } from "react-native-gesture-handler";
+import {
+  BallIndicator,
+  BarIndicator,
+  DotIndicator,
+  MaterialIndicator,
+  PacmanIndicator,
+  PulseIndicator,
+  SkypeIndicator,
+  UIActivityIndicator,
+  WaveIndicator,
+} from 'react-native-indicators';
 
 export default class FeedDetailScreen extends React.Component {
+  constructor(probs) {
+    super(probs)
+    this.state = {
+      isLoading: false,
+    }
+  }
+  
   render() {
     const { route, navigation } = this.props;
     const { post } = route.params;
     let content = null;
-    if (post.type == "photo") {
+    const YOUTUBE_API_KEY = "AIzaSyDrjIpM7RHx1vkul1KRb3iPKWGRdlJWIcc"
+    
+    if (post.type === "photo") {
       content = 
         <FlatList
           data={post.imagesURI}
           horizontal={true}
-          pagingEnable={true}
+          pagingEnabled={true}
+          showsHorizontalScrollIndicator={false}
           keyExtractor={({ id }) => id}
           renderItem={({ item }) => (
             <View>
@@ -38,8 +59,13 @@ export default class FeedDetailScreen extends React.Component {
             </View>
           )}
         />      
-    } else if (post.type == "video") {
-      content = <Text>video</Text>
+    } else if (post.type === "video") {
+      content = 
+        <WebView
+          style={styles.webView}
+          javaScriptEnabled={true}
+          source={{uri: post.videoURI}}
+        />
     } else {
       content = <Text>error</Text>
     }
@@ -48,16 +74,28 @@ export default class FeedDetailScreen extends React.Component {
         <Header navigation={navigation} />
         {post ? (
           <View>
-            {content}
-            
-            <View>
+            <ScrollView>
+              {content}
+            </ScrollView>
+            <View flexDirection="row">
               <Text style={styles.subtitle}>
                 {post.subtitle}
               </Text>
-              <Text>{post.numOfLike} {post.numOfPlay}</Text>  
-            </View>  
+           {/* heart, bookmark(FontAwesome5) : fulled  */}
+              <View style={{alignItems:"flex-end", paddingTop:10}}>
+                <View flexDirection="row" style={{paddingLeft:220}}>
+                <TouchableOpacity>
+                  <AntDesign name="hearto" size={25} style={{paddingRight:10}}/>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <FontAwesome name="bookmark-o" size={25}/>
+                </TouchableOpacity>
+                </View>              
+                <Text style={{color:'gray'}}>{post.numOfLike} {post.numOfPlay}</Text>  
+              </View>
+            </View> 
+            <DotIndicator color='white' />
           </View>
-          
         ) : (
           <NullScreen />
         )}
@@ -65,6 +103,8 @@ export default class FeedDetailScreen extends React.Component {
     );
   }
 }
+
+
 
 const Header = ({ navigation }) => {
   return (
@@ -104,11 +144,18 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   subtitle: {
-    fontSize: 50,
+    fontSize: 30,
     margin: 10,
   },
   image: {
     height: width,
     width: width,
+    marginTop:10,
+  },
+  webView: {
+    flex:1,
+    height: width,
+    width: width,
+    marginTop:10,
   }
 });

@@ -15,7 +15,7 @@
     "@react-navigation/material-bottom-tabs": "^5.2.12",
     "@react-navigation/native": "^5.6.1",
     "@react-navigation/stack": "^5.6.2",
-    "expo": "^38.0.8",
+    "expo": "^38.0.9",
     "expo-cli": "^3.22.1",
     "expo-status-bar": "^1.0.0",
     "native-base": "^2.13.12",
@@ -24,13 +24,16 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.0.tar.gz",
     "react-native-calendars": "^1.300.0",
     "react-native-gesture-handler": "~1.6.0",
+    "react-native-indicators": "^0.17.0",
     "react-native-paper": "^3.10.1",
     "react-native-reanimated": "~1.9.0",
-    "react-native-safe-area-context": "^3.0.2",
+    "react-native-safe-area-context": "~3.0.7",
     "react-native-screens": "~2.9.0",
     "react-native-vector-icons": "^6.6.0",
     "react-native-web": "~0.11.7",
-    "viewpager": "0.0.5"
+    "react-native-webview": "9.4.0",
+    "react-native-youtube": "^2.0.1",
+    "youtube-api": "^3.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",

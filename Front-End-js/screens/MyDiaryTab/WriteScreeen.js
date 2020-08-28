@@ -101,7 +101,6 @@ export default class WriteScreen extends React.Component {
                 this.setState({
                   visible: false
                 });
-                navigation.goBack();
               }}
             />
             <Button

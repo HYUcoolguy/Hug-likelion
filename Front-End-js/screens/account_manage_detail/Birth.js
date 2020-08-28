@@ -29,7 +29,11 @@ export default class Birth extends React.Component {
       <SafeAreaView style={styles.container}>
         <Header />
         <View style={styles.contentsContainer}></View>
-
+        <DateTimePicker
+          value={this.state.date}
+          display="default"
+          onChange={this._onChange}
+        />
         <View style={styles.buttonContainer}>
           <Button
             title="취소"

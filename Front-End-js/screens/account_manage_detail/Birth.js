@@ -9,22 +9,60 @@ import {
   TouchableOpacity,
   Button
 } from "react-native";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import moment from "moment";
 
-export default class NickName extends React.Component {
+export default class Birth extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      date: new Date(),
+      chosenDate: ""
+    };
   }
 
   render() {
     const { navigation } = this.props;
+    const { date } = this.state;
+
     return (
       <SafeAreaView style={styles.container}>
         <Header />
         <View style={styles.contentsContainer}></View>
+
+        <View style={styles.buttonContainer}>
+          <Button
+            title="취소"
+            onPress={() => {
+              navigation.goBack();
+            }}
+          />
+          <Button
+            title="저장"
+            onPress={() => {
+              this.setState(
+                {
+                  chosenDate: moment(this.state.date).format("YYYY.MM.DD")
+                },
+                () => {
+                  return;
+                }
+              );
+              navigation.navigate("Account", { birth: this.state.chosenDate });
+            }}
+          />
+        </View>
       </SafeAreaView>
     );
   }
+
+  _onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    //setState에 callback함수 추가하여 async 문제 해결
+    this.setState({ date: currentDate }, () => {
+      return;
+    });
+  };
 }
 
 const Header = () => {
@@ -61,5 +99,9 @@ const styles = StyleSheet.create({
     margin: 10,
     marginTop: 30,
     padding: 20
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "flex-end"
   }
 });

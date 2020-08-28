@@ -2,7 +2,7 @@ import * as React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 
-export default class ColorSelector extends React.Component {
+export default class RadioBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

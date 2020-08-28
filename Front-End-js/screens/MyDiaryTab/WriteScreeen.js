@@ -6,18 +6,31 @@ import {
   SafeAreaView,
   Dimensions,
   TextInput,
+  Button,
+  Modal,
   TouchableOpacity
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import ColorSelector from "../../component/ColorSelector";
 import HashTagMaker2 from "../../component/HashTag";
 import MultipleButton from "../../component/MultipleButton";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import moment from "moment";
 
 const { width, height } = Dimensions.get("window");
 
 export default class WriteScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+      date: new Date(),
+      chosenDate: ""
+    };
+  }
   render() {
     const { navigation, route } = this.props;
+    const { visible, date } = this.state;
     return (
       <SafeAreaView style={styles.container}>
         <Header navigation={navigation} />
@@ -25,7 +38,15 @@ export default class WriteScreen extends React.Component {
         <View style={styles.writeContainer}>
           <View style={styles.todayColor}>
             <Text>오늘 나의 색은?</Text>
+            <TouchableOpacity
+              onPress={() => {
+                this.setState({ visible: true });
+              }}
+            >
+              <Text>날짜 선택</Text>
+            </TouchableOpacity>
           </View>
+
           {route.params ? (
             <ColorSelector color={route.params.data.dotColor} />
           ) : (
@@ -67,9 +88,49 @@ export default class WriteScreen extends React.Component {
             )}
           </View>
         </View>
+        <View style={styles.modalContainer}>
+          <Modal visible={visible}>
+            <DateTimePicker
+              value={this.state.date}
+              display="default"
+              onChange={this._onChange}
+            />
+            <Button
+              title="취소"
+              onPress={() => {
+                this.setState({
+                  visible: false
+                });
+                navigation.goBack();
+              }}
+            />
+            <Button
+              title="저장"
+              onPress={() => {
+                this.setState(
+                  {
+                    chosenDate: moment(this.state.date).format("YYYY.MM.DD"),
+                    visible: false
+                  },
+                  () => {
+                    return;
+                  }
+                );
+              }}
+            />
+          </Modal>
+        </View>
       </SafeAreaView>
     );
   }
+
+  _onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    //setState에 callback함수 추가하여 async 문제 해결
+    this.setState({ date: currentDate }, () => {
+      return;
+    });
+  };
 }
 
 const Header = ({ navigation }) => {
@@ -128,6 +189,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#F0F8FF"
   },
   todayColor: {
+    justifyContent: "space-between",
+    flexDirection: "row",
     margin: 5,
     padding: 5
   },
@@ -155,5 +218,8 @@ const styles = StyleSheet.create({
   diaryContentsContainer: {
     padding: 20,
     paddingTop: 20
+  },
+  modalContainer: {
+    flex: 1
   }
 });

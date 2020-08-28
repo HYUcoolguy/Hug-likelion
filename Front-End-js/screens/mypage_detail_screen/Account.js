@@ -15,6 +15,7 @@ const { width, height } = Dimensions.get("window");
 export default class Account extends React.Component {
   render() {
     const { navigation } = this.props;
+
     return (
       <SafeAreaView style={styles.container}>
         <Header />

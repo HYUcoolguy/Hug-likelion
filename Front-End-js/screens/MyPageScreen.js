@@ -13,13 +13,30 @@ import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 const { width, height } = Dimensions.get("window");
 
 export default class MyPageScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName: ""
+    };
+  }
   render() {
     const { navigation } = this.props;
     return (
       <SafeAreaView style={styles.container}>
         <Header />
         <View style={styles.accountContainer}>
-          <Text>Cyrano</Text>
+          {this.state.userName ? (
+            <Text>{userName}</Text>
+          ) : (
+            <View>
+              <TouchableOpacity>
+                <Text>로그인</Text>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Text>회원가입</Text>
+              </TouchableOpacity>
+            </View>
+          )}
         </View>
         <MyPageNav navigation={navigation} />
       </SafeAreaView>

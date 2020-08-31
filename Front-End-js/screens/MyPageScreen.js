@@ -29,11 +29,12 @@ export default class MyPageScreen extends React.Component {
             <Text>{userName}</Text>
           ) : (
             <View>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("SignIn");
+                }}
+              >
                 <Text>로그인</Text>
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Text>회원가입</Text>
               </TouchableOpacity>
             </View>
           )}

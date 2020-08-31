@@ -117,9 +117,13 @@ export default class Account extends React.Component {
 const Header = () => {
   return (
     <View style={styles.headerContainer}>
+      <TouchableOpacity style={styles.icon_container}>
+        <Ionicons name="ios-arrow-back" size={23} />
+      </TouchableOpacity>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>계정 관리</Text>
       </View>
+      <View style={styles.header_right}></View>
     </View>
   );
 };
@@ -130,7 +134,12 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     paddingTop: 90
   },
+  header_right: {
+    flex: 1,
+    marginRight: 15
+  },
   headerContainer: {
+    flexDirection: "row",
     alignItems: "center",
     borderBottomWidth: 1,
     borderBottomColor: "gray",
@@ -143,6 +152,11 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 25
+  },
+  icon_container: {
+    flex: 1,
+    alignItems: "flex-start",
+    marginLeft: 15
   },
   profileContainer: {
     backgroundColor: "#F0F8FF",

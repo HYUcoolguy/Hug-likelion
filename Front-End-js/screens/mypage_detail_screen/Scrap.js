@@ -23,13 +23,13 @@ export default function Scrap() {
 const Header = ({ navigation }) => {
   return (
     <View style={styles.headerContainer}>
-      <View style={styles.header_left}></View>
+      <TouchableOpacity style={styles.icon_container}>
+        <Ionicons name="ios-arrow-back" size={23} />
+      </TouchableOpacity>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>스크랩 게시물</Text>
       </View>
-      <TouchableOpacity style={styles.icon_container}>
-        <Ionicons name="ios-add" size={23} />
-      </TouchableOpacity>
+      <View style={styles.header_right}></View>
     </View>
   );
 };
@@ -48,9 +48,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingBottom: 10
   },
-  header_left: {
+  header_right: {
     flex: 1,
-    marginLeft: 15
+    marginRight: 15
   },
   titleContainer: {
     flex: 1,
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
   icon_container: {
     flex: 1,
-    alignItems: "flex-end",
-    marginRight: 15
+    alignItems: "flex-start",
+    marginLeft: 15
   }
 });

@@ -10,7 +10,7 @@ import {
   Modal,
   TouchableOpacity
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons, Octicons } from "@expo/vector-icons";
 import ColorSelector from "../../component/ColorSelector";
 import HashTagMaker2 from "../../component/HashTag";
 import MultipleButton from "../../component/MultipleButton";
@@ -38,13 +38,27 @@ export default class WriteScreen extends React.Component {
         <View style={styles.writeContainer}>
           <View style={styles.todayColor}>
             <Text>오늘 나의 색은?</Text>
-            <TouchableOpacity
-              onPress={() => {
-                this.setState({ visible: true });
-              }}
-            >
-              <Text>날짜 선택</Text>
-            </TouchableOpacity>
+            {route.params ? (
+              <TouchableOpacity
+                onPress={() => {
+                  this.setState({ visible: true });
+                }}
+                style={styles.dateContainer}
+              >
+                <Octicons name="calendar" style={{ marginTop: 2 }} />
+                <Text style={{ marginLeft: 5 }}>{route.params.data.date}</Text>
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                onPress={() => {
+                  this.setState({ visible: true });
+                }}
+                style={styles.dateContainer}
+              >
+                <Octicons name="calendar" style={{ marginTop: 2 }} />
+                <Text style={{ marginLeft: 5 }}>날짜 선택</Text>
+              </TouchableOpacity>
+            )}
           </View>
 
           {route.params ? (
@@ -88,37 +102,44 @@ export default class WriteScreen extends React.Component {
             )}
           </View>
         </View>
-        <View style={styles.modalContainer}>
-          <Modal visible={visible}>
-            <DateTimePicker
-              value={this.state.date}
-              display="default"
-              onChange={this._onChange}
-            />
-            <Button
-              title="취소"
-              onPress={() => {
-                this.setState({
-                  visible: false
-                });
-              }}
-            />
-            <Button
-              title="저장"
-              onPress={() => {
-                this.setState(
-                  {
-                    chosenDate: moment(this.state.date).format("YYYY.MM.DD"),
-                    visible: false
-                  },
-                  () => {
-                    return;
-                  }
-                );
-              }}
-            />
-          </Modal>
-        </View>
+
+        <Modal visible={visible} transparent={true}>
+          <View style={styles.modalContainer}>
+            <View style={styles.modalMain}>
+              <DateTimePicker
+                value={this.state.date}
+                display="default"
+                onChange={this._onChange}
+              />
+              <View style={{ flexDirection: "row", justifyContent: "center" }}>
+                <Button
+                  title="취소"
+                  onPress={() => {
+                    this.setState({
+                      visible: false
+                    });
+                  }}
+                />
+                <Button
+                  title="저장"
+                  onPress={() => {
+                    this.setState(
+                      {
+                        chosenDate: moment(this.state.date).format(
+                          "YYYY.MM.DD"
+                        ),
+                        visible: false
+                      },
+                      () => {
+                        return;
+                      }
+                    );
+                  }}
+                />
+              </View>
+            </View>
+          </View>
+        </Modal>
       </SafeAreaView>
     );
   }
@@ -187,6 +208,9 @@ const styles = StyleSheet.create({
     height: height,
     backgroundColor: "#F0F8FF"
   },
+  dateContainer: {
+    flexDirection: "row"
+  },
   todayColor: {
     justifyContent: "space-between",
     flexDirection: "row",
@@ -219,6 +243,12 @@ const styles = StyleSheet.create({
     paddingTop: 20
   },
   modalContainer: {
-    flex: 1
+    flex: 1,
+    backgroundColor: "#000000aa"
+  },
+  modalMain: {
+    backgroundColor: "white",
+    marginTop: 100,
+    margin: 50
   }
 });

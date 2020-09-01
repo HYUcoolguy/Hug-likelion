@@ -16,6 +16,7 @@ import NullScreen from "../NullScreen";
 export default class UrDiaryMainScreen extends React.Component{
   constructor() {
     super()
+    
     this.state = { 
       userRule: [
         {
@@ -32,11 +33,10 @@ export default class UrDiaryMainScreen extends React.Component{
           postId:1,
           nickname:"나는야코딩왕",
           sex:"male",
-          uploadTime:"2020-07-30/12-10-10", // YY-MM-DD/HH-MM-SS
+          uploadTime:"3시간 전", // YY-MM-DD/HH-MM-SS
           contents:"what do you do for fun?",
           numOfLike:100,
           numOfComments: 100,
-          isValid:true,
           comments:[
             { 
               userId: "1",
@@ -214,6 +214,13 @@ export default class UrDiaryMainScreen extends React.Component{
       ],
     };
   }
+
+  // shouldComponentUpdate() {
+  //   this.props.navigation.dangerouslyGetParent().setOptions({
+  //     tabBarVisible: true
+  //   });
+  // }
+
   render() {
     const { navigation } = this.props;
     return (

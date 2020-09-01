@@ -24,7 +24,7 @@ export default function UrDiaryItemFooter({numOfLike, numOfComments}) {
             setLikeClicked(likeClicked=true) 
         }}>
         <AntDesign name={likeClicked?"like1":"like2"} size={20} style={{color:'gray'}}/>
-        <Text style={{marginRight:30, color:'gray'}}>{likeNums}</Text>
+        <Text style={{marginRight:20, padding:3, color:'gray'}}>{likeNums}</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style = {{flexDirection:"row"}}
@@ -33,8 +33,8 @@ export default function UrDiaryItemFooter({numOfLike, numOfComments}) {
        
           // });
         }}>
-        <EvilIcons name="comment" size={25} style={{color:'black'}}/>
-        <Text style={{marginRight:30, color:'gray'}}>{numOfComments}</Text>
+        <EvilIcons name="comment" size={25} style={{color:'gray', paddingTop:1}}/>
+        <Text style={{paddingTop:3, color:'gray'}}>{numOfComments}</Text>
       </TouchableOpacity>
     </View>
   );

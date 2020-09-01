@@ -64,7 +64,9 @@ export default class Birth extends React.Component {
     const currentDate = selectedDate || date;
     //setState에 callback함수 추가하여 async 문제 해결
     this.setState({ date: currentDate }, () => {
-      return;
+      console.log(this.state.date);
+      const va = new Date("2020-01-02");
+      console.log(va);
     });
   };
 }

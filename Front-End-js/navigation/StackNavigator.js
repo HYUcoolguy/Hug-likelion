@@ -15,7 +15,7 @@ import Birth from "../screens/account_manage_detail/Birth";
 import Sex from "../screens/account_manage_detail/Sex";
 import Email from "../screens/account_manage_detail/Email";
 import PhoneNumber from "../screens/account_manage_detail/PhoneNumber";
-import SignIn from "../screens/mypage_detail_screen/SignIn";
+import Login from "../screens/mypage_detail_screen/Login";
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
@@ -77,8 +77,8 @@ export function TabFourNavigator() {
         options={navOptionHandler}
       />
       <TabFourStack.Screen
-        name="SignIn"
-        component={SignIn}
+        name="Login"
+        component={Login}
         options={navOptionHandler}
       />
       <TabFourStack.Screen

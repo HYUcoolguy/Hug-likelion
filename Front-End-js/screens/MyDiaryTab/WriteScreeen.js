@@ -41,7 +41,10 @@ export default class WriteScreen extends React.Component {
             {route.params ? (
               <TouchableOpacity
                 onPress={() => {
-                  this.setState({ visible: true });
+                  this.setState({
+                    visible: true,
+                    date: new Date(`${route.params.data.date}`)
+                  });
                 }}
                 style={styles.dateContainer}
               >

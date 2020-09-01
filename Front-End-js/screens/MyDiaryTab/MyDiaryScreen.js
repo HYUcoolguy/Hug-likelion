@@ -17,11 +17,11 @@ export default class MyDiaryScreen extends React.Component {
     this.state = {
       selectedDate: "",
       markedDate: {
-        "2020-07-16": {
+        "2020-09-03": {
           marked: true,
           dotColor: "#3F51B5"
         },
-        "2020-07-17": {
+        "2020-09-02": {
           marked: true,
           dotColor: "#9C27B0"
         }
@@ -46,10 +46,10 @@ export default class MyDiaryScreen extends React.Component {
       posts: [
         {
           id: 1,
-          title: "7월 16일의 감정상태",
+          title: "9월 3일의 감정상태",
           hashes: ["슬프다", "왜냐면", "치킨 못 먹어서"],
           content: "본문내용은 다음과 같습니다 본문 예시입니다",
-          date: "2020-07-16",
+          date: "2020-09-03",
           emotions1: ["실망", "좌절"],
           emotions2: ["무기력"],
           marked: true,
@@ -57,10 +57,10 @@ export default class MyDiaryScreen extends React.Component {
         },
         {
           id: 2,
-          title: "7월 17일의 감정상태",
+          title: "9월 2일의 감정상태",
           hashes: ["우울하다", "왜냐면", "이별해서"],
           content: "본문내용은 다음과 같습니다 본문 예시입니다",
-          date: "2020-07-17",
+          date: "2020-09-02",
           emotions1: ["상처"],
           emotions2: ["외로움", "무기력"],
           marked: true,

@@ -31,10 +31,10 @@ export default class MyPageScreen extends React.Component {
             <View>
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate("SignIn");
+                  navigation.navigate("Login");
                 }}
               >
-                <Text>로그인</Text>
+                <Text style={{ fontWeight: "bold" }}>로그인</Text>
               </TouchableOpacity>
             </View>
           )}
@@ -76,16 +76,6 @@ const MyPageNav = ({ navigation }) => {
       >
         <MaterialIcons name="account-box" size="21" />
         <Text style={styles.tabText}>계정 관리</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("Subscribe");
-        }}
-        style={styles.tabContainer}
-      >
-        <MaterialIcons name="favorite" size="21" />
-        <Text style={styles.tabText}>프리미엄 버전</Text>
       </TouchableOpacity>
     </View>
   );

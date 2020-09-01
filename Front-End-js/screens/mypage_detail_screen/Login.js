@@ -10,23 +10,25 @@ import {
 } from "react-native";
 import { FontAwesome, Feather } from "@expo/vector-icons";
 
+const { height, width } = Dimensions.get("window");
+
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {
-        ID: "",
-        Password: "",
-        check_textInputChange: false,
-        secureTextEntry: true
-      }
+      ID: "",
+      Password: "",
+      check_textInputChange: false,
+      secureTextEntry: true
     };
   }
+
   render() {
+    const { navigation } = this.props;
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>
-          <Text>Welcome to Hug</Text>
+          <Text style={{ fontWeight: "bold" }}>Welcome to Hug</Text>
         </View>
         <View style={styles.footer}>
           <Text>ID</Text>
@@ -36,8 +38,9 @@ export default class Login extends React.Component {
               autoCapitalize="none"
               placeholder="Your ID"
               style={styles.textInput}
+              onChangeText={(text) => this._textInputChange(text)}
             />
-            {this.state.data.check_textInputChange ? (
+            {this.state.check_textInputChange ? (
               <Feather name="check-circle" color="green" size={20} />
             ) : null}
           </View>
@@ -47,16 +50,64 @@ export default class Login extends React.Component {
             <TextInput
               autoCapitalize="none"
               placeholder="Your Password"
-              secureTextEntry={true}
+              secureTextEntry={this.state.secureTextEntry}
               style={styles.textInput}
+              onChangeText={(val) => this._handlePass(val)}
             />
-
-            <Feather name="eye-off" color="grey" size={20} />
+            <TouchableOpacity onPress={this._securePass}>
+              {this.state.secureTextEntry ? (
+                <Feather name="eye-off" color="grey" size={20} />
+              ) : (
+                <Feather name="eye" color="red" size={20} />
+              )}
+            </TouchableOpacity>
+          </View>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => {
+                navigation.goBack();
+              }}
+            >
+              <Text style={{ fontWeight: "bold" }}> Sign In</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button}>
+              <Text style={{ fontWeight: "bold" }}>Sign Up</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </SafeAreaView>
     );
   }
+  _textInputChange = (val) => {
+    const { ID, check_textInputChange } = this.state;
+    if (val.length !== 0) {
+      this.setState({
+        ID: val,
+        check_textInputChange: true
+      });
+    } else {
+      this.setState({
+        ID: val,
+        check_textInputChange: false
+      });
+    }
+  };
+
+  _handlePass = (val) => {
+    const { Password } = this.state;
+    this.setState({
+      Password: val
+    });
+  };
+
+  _securePass = (val) => {
+    const { secureTextEntry } = this.state;
+
+    this.setState({
+      secureTextEntry: !secureTextEntry
+    });
+  };
 }
 //ID textInput onchangeText용 함수, Password eye, eye-off 다루는 함수, Login, 회원가입 버튼 만들기
 const styles = StyleSheet.create({
@@ -90,5 +141,18 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingLeft: 10,
     color: "#05375a"
+  },
+  buttonContainer: {
+    alignItems: "center",
+    marginTop: 40
+  },
+  button: {
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 20,
+    backgroundColor: "#F0F8FF",
+    marginVertical: 10,
+    width: "100%",
+    height: 50
   }
 });

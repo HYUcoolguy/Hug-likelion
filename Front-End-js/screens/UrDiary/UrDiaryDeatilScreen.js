@@ -64,8 +64,8 @@ export default class UrDiaryDeatilScreen extends React.Component {
           <Text style={styles.commentText}>{item.comment}</Text>
           <View flexDirection='row'>
               <Text style={{fontSize:11,paddingTop:6,color:'gray'}}>{item.uploadTime}</Text>
-              <TouchableOpacity style={{paddingTop:7, paddingLeft:10}}>
-                <Text style={{fontSize:10, color:'gray'}}>댓글 달기</Text>
+              <TouchableOpacity style={{paddingTop:6, paddingLeft:10}}>
+                <Text style={{fontSize:11, color:'gray'}}>댓글 달기</Text>
               </TouchableOpacity>
           </View>
         </View>
@@ -86,17 +86,6 @@ export default class UrDiaryDeatilScreen extends React.Component {
     return (
       <SafeAreaView style={styles.container}>
         <Header navigation={navigation}/>
-        {/* <TouchableOpacity
-          style={styles.headerContainer}
-          onPress={() => {
-            navigation.dangerouslyGetParent().setOptions({
-              tabBarVisible: true
-            });
-            navigation.goBack();
-          }}>
-          <Ionicons name="ios-arrow-back" size={30} />
-          <Text style={styles.backButtonText}>너의 일기</Text>
-        </TouchableOpacity> */}
         {post ? (
           <View style={{marginBottom:240}}>
             <View style={styles.postContainer}>
@@ -124,7 +113,9 @@ export default class UrDiaryDeatilScreen extends React.Component {
                 this._makeTodoItem
               }
               keyExtractor={({ uid }) => uid}/>
+            <View style={{}}>
             <GrayDivider/>
+            <View flexDirection="row">
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.commentInput}
@@ -136,6 +127,12 @@ export default class UrDiaryDeatilScreen extends React.Component {
                 onEndEditing={this._addTodoItem}
                 returnKeyType="done"/> 
             </View>
+            <TouchableOpacity style={styles.inputButton}>
+              <Text style={{color:"#a0a0a0"}}>작성</Text>
+            </TouchableOpacity>
+            </View>
+            </View>
+            
           </View>
             
         ) : (
@@ -211,16 +208,24 @@ const styles = StyleSheet.create({
     paddingLeft:15,
     paddingTop:15,
     flexDirection:"row",
-    
   },
   commentInput:{
-    fontSize: 30,
+    fontSize: 40,
     fontWeight: 'bold',
-    color: '#3f4e6b',
+    color: '#3f4e6b',   
+  },
+  inputButton:{
+    justifyContent: 'center', 
+    alignItems:'flex-end', 
+    fontWeight: "bold"
   },
   inputContainer:{
-    height: 30,
-    backgroundColor: 'yellow',
+    justifyContent: 'center',
+    height: 40,
+    backgroundColor: '#f0f0e0',   // 배경색으로 딱
     margin:10,
-  }
+    paddingLeft:20,
+    borderRadius: 18,
+    width: width-70,
+  },
 });

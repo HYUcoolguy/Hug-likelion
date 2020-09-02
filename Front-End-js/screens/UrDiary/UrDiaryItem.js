@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     },
     nickname: {
       marginLeft:7,
-      fontWeight:"bold"
+      // fontWeight:"bold"
     },
     uploadTime:{
       fontSize:11,

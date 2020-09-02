@@ -10,6 +10,10 @@ import {
   TabFourNavigator
 } from "./StackNavigator";
 
+import MyDiaryScreen from "../screens/MyDiaryTab/MyDiaryScreen";
+import WriteScreen from "../screens/MyDiaryTab/WriteScreeen";
+import { createStackNavigator } from "@react-navigation/stack";
+
 const BottomTab = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
@@ -27,11 +31,12 @@ export default function BottomTabNavigator() {
       <BottomTab.Screen
         name="나의 일기"
         component={TabTwoNavigator}
-        options={{
+        options={({ route }) => ({
+          tabBarVisible: getTabBarVisible(route),
           tabBarIcon: ({ color }) => (
             <Entypo name="calendar" color={color} size={23} />
           )
-        }}
+        })}
       />
       <BottomTab.Screen
         name="너의 일기"
@@ -53,6 +58,17 @@ export default function BottomTabNavigator() {
       />
     </BottomTab.Navigator>
   );
+}
+
+function getTabBarVisible(route) {
+  const routeName = route.state
+    ? route.state.routes[route.state.index].name
+    : route.params?.screen || "TabTwoScreen";
+
+  if (routeName === "WriteScreen") {
+    return false;
+  }
+  return true;
 }
 
 // You can explore the built-in icon families and icons on the web at:

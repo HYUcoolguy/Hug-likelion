@@ -124,7 +124,6 @@ export function TabFourNavigator() {
     </TabFourStack.Navigator>
   );
 }
-
 const navOptionHandler = () => ({
   headerShown: false
 });

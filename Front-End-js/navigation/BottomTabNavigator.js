@@ -10,10 +10,6 @@ import {
   TabFourNavigator
 } from "./StackNavigator";
 
-import MyDiaryScreen from "../screens/MyDiaryTab/MyDiaryScreen";
-import WriteScreen from "../screens/MyDiaryTab/WriteScreeen";
-import { createStackNavigator } from "@react-navigation/stack";
-
 const BottomTab = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
@@ -32,7 +28,7 @@ export default function BottomTabNavigator() {
         name="나의 일기"
         component={TabTwoNavigator}
         options={({ route }) => ({
-          tabBarVisible: getTabBarVisible(route),
+          tabBarVisible: getTabBarVisibleSecond(route),
           tabBarIcon: ({ color }) => (
             <Entypo name="calendar" color={color} size={23} />
           )
@@ -50,17 +46,19 @@ export default function BottomTabNavigator() {
       <BottomTab.Screen
         name="마이페이지"
         component={TabFourNavigator}
-        options={{
+        options={({ route }) => ({
+          tabBarVisible: getTabBarVisibleFourth(route),
           tabBarIcon: ({ color }) => (
             <Ionicons name="md-person" color={color} size={23} />
           )
-        }}
+        })}
       />
     </BottomTab.Navigator>
   );
 }
 
-function getTabBarVisible(route) {
+function getTabBarVisibleSecond(route) {
+  console.log(route.state);
   const routeName = route.state
     ? route.state.routes[route.state.index].name
     : route.params?.screen || "TabTwoScreen";
@@ -71,5 +69,16 @@ function getTabBarVisible(route) {
   return true;
 }
 
+function getTabBarVisibleFourth(route) {
+  console.log(route.state);
+  const routeName = route.state
+    ? route.state.routes[route.state.index].name
+    : route.params?.screen || "TabFourScreen";
+
+  if (routeName !== "TabFourScreen") {
+    return false;
+  }
+  return true;
+}
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/

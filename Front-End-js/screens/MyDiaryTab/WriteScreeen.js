@@ -8,6 +8,7 @@ import {
   TextInput,
   Button,
   Modal,
+  Alert,
   TouchableOpacity
 } from "react-native";
 import { Ionicons, MaterialIcons, Octicons } from "@expo/vector-icons";
@@ -170,7 +171,30 @@ const Header = ({ navigation }) => {
       <View style={styles.titleContainer}>
         <Text style={styles.title}>나의 일기</Text>
       </View>
-      <View style={styles.header_right}></View>
+      <TouchableOpacity
+        onPress={() => {
+          Alert.alert(
+            "삭제하시겠습니까",
+            "",
+            [
+              {
+                text: "취소",
+                onPress: () => console.log("Cancel Pressed")
+              },
+              {
+                text: "삭제",
+                onPress: () => {
+                  navigation.goBack();
+                }
+              }
+            ],
+            { cancelable: false }
+          );
+        }}
+        style={styles.headerDelete}
+      >
+        <MaterialIcons name="delete-forever" size={25} />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -201,9 +225,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 25
   },
-  header_right: {
+  headerDelete: {
     flex: 1,
-    marginRight: 10
+    marginRight: 10,
+    alignItems: "flex-end"
   },
   writeContainer: {
     margin: 15,

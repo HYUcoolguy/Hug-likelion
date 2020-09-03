@@ -8,7 +8,7 @@ import {
   TextInput,
   TouchableOpacity
 } from "react-native";
-import { FontAwesome, Feather } from "@expo/vector-icons";
+import { FontAwesome, Feather, Ionicons } from "@expo/vector-icons";
 
 const { height, width } = Dimensions.get("window");
 
@@ -75,6 +75,20 @@ export default class Login extends React.Component {
               <Text style={{ fontWeight: "bold" }}>Sign Up</Text>
             </TouchableOpacity>
           </View>
+          <View style={styles.socialButtonContainer}>
+            <TouchableOpacity style={styles.socialButton}>
+              <Ionicons name="logo-google" size={20} color="white" />
+              <Text style={{ fontWeight: "bold", color: "white" }}>
+                Google 계정 로그인
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.socialButton}>
+              <Ionicons name="logo-facebook" size={20} color="white" />
+              <Text style={{ fontWeight: "bold", color: "white" }}>
+                facebook 계정 로그인
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </SafeAreaView>
     );
@@ -113,7 +127,7 @@ export default class Login extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F0F8FF"
+    backgroundColor: "#E6E6FA"
   },
   header: {
     flex: 1,
@@ -144,15 +158,29 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     alignItems: "center",
-    marginTop: 40
+    marginTop: 10
   },
   button: {
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 20,
-    backgroundColor: "#F0F8FF",
+    borderRadius: 10,
+    backgroundColor: "#E6E6FA",
     marginVertical: 10,
     width: "100%",
     height: 50
+  },
+  socialButtonContainer: {
+    flexDirection: "row",
+    marginTop: 10
+  },
+  socialButton: {
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 20,
+    marginVertical: 10,
+    width: "50%",
+    height: 50,
+    marginHorizontal: 2,
+    backgroundColor: "grey"
   }
 });

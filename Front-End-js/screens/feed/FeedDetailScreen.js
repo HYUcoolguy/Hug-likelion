@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Ionicons, AntDesign, FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import NullScreen from "../NullScreen";
+import { WebView } from 'react-native-webview';
+import { FlatList, ScrollView } from "react-native-gesture-handler";
 
 import {
   StyleSheet,
@@ -13,8 +15,6 @@ import {
   Alert,
   ActivityIndicator
 } from "react-native";
-import { WebView } from 'react-native-webview';
-import { FlatList, ScrollView } from "react-native-gesture-handler";
 import {
   BallIndicator,
   BarIndicator,
@@ -82,7 +82,7 @@ export default class FeedDetailScreen extends React.Component {
               </Text>
            {/* heart, bookmark(FontAwesome5) : fulled  */}
               <View style={{alignItems:"flex-end", paddingTop:10}}>
-                <View flexDirection="row" style={{paddingLeft:220}}>
+                <View flexDirection="row" style={{paddingLeft:160}}>
                 <TouchableOpacity>
                   <AntDesign name="hearto" size={25} style={{paddingRight:10}}/>
                 </TouchableOpacity>

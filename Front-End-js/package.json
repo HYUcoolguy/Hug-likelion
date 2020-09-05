@@ -13,15 +13,9 @@
     "@react-navigation/bottom-tabs": "^5.7.2",
     "@react-navigation/drawer": "^5.8.4",
     "@react-navigation/material-bottom-tabs": "^5.2.12",
-<<<<<<< HEAD
-    "@react-navigation/native": "^5.6.1",
-    "@react-navigation/stack": "^5.6.2",
-    "expo": "^38.0.9",
-=======
     "@react-navigation/native": "^5.7.1",
     "@react-navigation/stack": "^5.7.1",
     "expo": "^38.0.10",
->>>>>>> UrDiaryTab
     "expo-cli": "^3.22.1",
     "expo-status-bar": "^1.0.0",
     "native-base": "^2.13.12",

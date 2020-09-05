@@ -12,7 +12,6 @@ import {
   SafeAreaView,
   Image,
   Dimensions,
-  ScrollView,
   Alert,
   ActivityIndicator
 } from "react-native";

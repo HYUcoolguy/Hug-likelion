@@ -299,17 +299,17 @@ export default class UrDiaryMainScreen extends React.Component{
     };
   }
 
-  componentDidMount() {
-    fetch('http://back-end.eba-4czmenr9.us-west-2.elasticbeanstalk.com/feed/')
-        .then((response) => response.json())
-        .then((json) => {
-          this.setState({ data: JSON.stringify(json) });
-        })
-        .catch((error) => console.error(error))
-        .finally(() => {
-          this.setState({ isLoading: false });
-        });
-  }
+  // componentDidMount() {
+  //   fetch('http://back-end.eba-4czmenr9.us-west-2.elasticbeanstalk.com/feed/')
+  //       .then((response) => response.json())
+  //       .then((json) => {
+  //         this.setState({ data: JSON.stringify(json) });
+  //       })
+  //       .catch((error) => console.error(error))
+  //       .finally(() => {
+  //         this.setState({ isLoading: false });
+  //       });
+  // }
 
   render() {
     const { navigation } = this.props;

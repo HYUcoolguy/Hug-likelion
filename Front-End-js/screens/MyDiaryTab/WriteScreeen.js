@@ -34,7 +34,7 @@ export default class WriteScreen extends React.Component {
     const { visible, date } = this.state;
     return (
       <SafeAreaView style={styles.container}>
-        <Header navigation={navigation} />
+        <Header navigation={navigation} route={route} />
 
         <View style={styles.writeContainer}>
           <View style={styles.todayColor}>
@@ -157,7 +157,7 @@ export default class WriteScreen extends React.Component {
   };
 }
 
-const Header = ({ navigation }) => {
+const Header = ({ navigation, route }) => {
   return (
     <View style={styles.headerContainer}>
       <TouchableOpacity
@@ -171,30 +171,34 @@ const Header = ({ navigation }) => {
       <View style={styles.titleContainer}>
         <Text style={styles.title}>나의 일기</Text>
       </View>
-      <TouchableOpacity
-        onPress={() => {
-          Alert.alert(
-            "삭제하시겠습니까",
-            "",
-            [
-              {
-                text: "취소",
-                onPress: () => console.log("Cancel Pressed")
-              },
-              {
-                text: "삭제",
-                onPress: () => {
-                  navigation.goBack();
+      {route.params ? (
+        <TouchableOpacity
+          onPress={() => {
+            Alert.alert(
+              "삭제하시겠습니까",
+              "",
+              [
+                {
+                  text: "취소",
+                  onPress: () => console.log("Cancel Pressed")
+                },
+                {
+                  text: "삭제",
+                  onPress: () => {
+                    navigation.goBack();
+                  }
                 }
-              }
-            ],
-            { cancelable: false }
-          );
-        }}
-        style={styles.headerDelete}
-      >
-        <MaterialIcons name="delete-forever" size={25} />
-      </TouchableOpacity>
+              ],
+              { cancelable: false }
+            );
+          }}
+          style={styles.headerDelete}
+        >
+          <MaterialIcons name="delete-forever" size={25} />
+        </TouchableOpacity>
+      ) : (
+        <View style={styles.header_right}></View>
+      )}
     </View>
   );
 };
@@ -229,6 +233,10 @@ const styles = StyleSheet.create({
     flex: 1,
     marginRight: 10,
     alignItems: "flex-end"
+  },
+  header_right: {
+    flex: 1,
+    marginRight: 10
   },
   writeContainer: {
     margin: 15,

@@ -16,9 +16,9 @@ export default function FeedItem({post}) {
         }}
         style={styles.thumnail}
       />
-      <Text>{post.subtitle}</Text> 
-      <Text>{post.numOfLike} {post.numOfPlay}</Text>
-      <Text>{post.type}</Text>
+      <Text style={{marginTop:5}}>{post.subtitle}</Text> 
+      {/* <Text>{post.numOfLike} {post.numOfPlay}</Text>
+      <Text>{post.type}</Text> */}
       
     </View>
   );

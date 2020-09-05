@@ -13,8 +13,8 @@
     "@react-navigation/bottom-tabs": "^5.7.2",
     "@react-navigation/drawer": "^5.8.4",
     "@react-navigation/material-bottom-tabs": "^5.2.12",
-    "@react-navigation/native": "^5.7.1",
-    "@react-navigation/stack": "^5.7.1",
+    "@react-navigation/native": "^5.6.1",
+    "@react-navigation/stack": "^5.6.2",
     "expo": "^38.0.9",
     "expo-cli": "^3.22.1",
     "expo-status-bar": "^1.0.0",
@@ -26,9 +26,10 @@
     "react-native-color-palette": "^2.2.0",
     "react-native-elements": "^2.0.4",
     "react-native-gesture-handler": "~1.6.0",
+    "react-native-indicators": "^0.17.0",
     "react-native-paper": "^3.10.1",
     "react-native-reanimated": "~1.9.0",
-    "react-native-safe-area-context": "^3.0.2",
+    "react-native-safe-area-context": "~3.0.7",
     "react-native-screens": "~2.9.0",
     "react-native-selectmultiple-button": "^0.1.105",
     "react-native-slideable-calendar-strip": "^0.4.0",
@@ -38,8 +39,7 @@
     "react-native-tags-input": "^1.0.10",
     "react-native-vector-icons": "^6.6.0",
     "react-native-web": "~0.11.7",
-    "react-navigation": "^4.4.0",
-    "viewpager": "0.0.5"
+    "react-native-webview": "9.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",

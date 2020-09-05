@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import ColorSelector from "../component/ColorSelector";
 import HashTagMaker2 from "../component/HashTag";
-import { ButtonGroup } from "react-native-elements";
 const { width, height } = Dimensions.get("window");
 
 export default class WriteScreen extends React.Component {

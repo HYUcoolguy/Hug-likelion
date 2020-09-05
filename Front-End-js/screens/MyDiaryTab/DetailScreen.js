@@ -9,7 +9,7 @@ import {
   Dimensions,
   ScrollView
 } from "react-native";
-import NullScreen from "./NullScreen";
+import NullScreen from "../NullScreen";
 import { Ionicons, Entypo, AntDesign } from "@expo/vector-icons";
 
 const { width, height } = Dimensions.get("window");
@@ -21,18 +21,22 @@ export default class DetailScreen extends React.Component {
 
     return (
       <SafeAreaView style={styles.container}>
-        <Header navigation={navigation} />
-        <View style={styles.calendarNav}>
-          <Text>calendar Navigation Part</Text>
-        </View>
+        <Header navigation={navigation} posts={posts} />
         {posts ? (
           <View style={styles.contentsContainer}>
             <View style={styles.todayMind}>
               <View style={styles.MindTitle}>
-                <Text>오늘의 감정 part</Text>
+                <Text>오늘의 감정</Text>
               </View>
               <View style={styles.MindDetail}>
-                <Text>감정 나열</Text>
+                <Text>
+                  {posts.emotions1.map((emotion) => {
+                    return `${emotion} `;
+                  })}
+                  {posts.emotions2.map((emotion) => {
+                    return `${emotion} `;
+                  })}
+                </Text>
               </View>
             </View>
             <ScrollView style={styles.diaryContainer}>
@@ -54,7 +58,7 @@ export default class DetailScreen extends React.Component {
   }
 }
 
-const Header = ({ navigation }) => {
+const Header = ({ navigation, posts }) => {
   return (
     <View style={styles.headerContainer}>
       <TouchableOpacity
@@ -71,7 +75,7 @@ const Header = ({ navigation }) => {
       <TouchableOpacity
         style={styles.headerWrite}
         onPress={() => {
-          navigation.navigate("WriteScreen");
+          navigation.navigate("WriteScreen", { data: posts });
         }}
       >
         <Ionicons name="ios-create" size={25} />
@@ -127,11 +131,9 @@ const styles = StyleSheet.create({
     padding: 5
   },
   MindTitle: {
-    backgroundColor: "#7FFFD4",
     margin: 5
   },
   MindDetail: {
-    backgroundColor: "#00FFFF",
     margin: 5
   },
   diaryContainer: {

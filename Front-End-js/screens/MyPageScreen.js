@@ -8,13 +8,37 @@ import {
   TextInput,
   TouchableOpacity
 } from "react-native";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+
+const { width, height } = Dimensions.get("window");
 
 export default class MyPageScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName: ""
+    };
+  }
   render() {
     const { navigation } = this.props;
     return (
       <SafeAreaView style={styles.container}>
         <Header />
+        <View style={styles.accountContainer}>
+          {this.state.userName ? (
+            <Text>{userName}</Text>
+          ) : (
+            <View>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("Login");
+                }}
+              >
+                <Text style={{ fontWeight: "bold" }}>로그인</Text>
+              </TouchableOpacity>
+            </View>
+          )}
+        </View>
         <MyPageNav navigation={navigation} />
       </SafeAreaView>
     );
@@ -36,47 +60,22 @@ const MyPageNav = ({ navigation }) => {
     <View style={styles.navContainer}>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("Log");
-        }}
-        style={styles.tabContainer}
-      >
-        <Text style={styles.tabText}>최근 본 게시물</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        onPress={() => {
           navigation.navigate("Scrap");
         }}
         style={styles.tabContainer}
       >
+        <MaterialIcons name="bookmark" size="21" />
         <Text style={styles.tabText}>스크랩 게시물</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("Nowadays_emotion");
+          navigation.navigate("Account");
         }}
         style={styles.tabContainer}
       >
-        <Text style={styles.tabText}>최근 나의 온도</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("Nickname");
-        }}
-        style={styles.tabContainer}
-      >
-        <Text style={styles.tabText}>닉네임 설정</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("Subscribe");
-        }}
-        style={styles.tabContainer}
-      >
-        <Text style={styles.tabText}>프리미엄 버전</Text>
+        <MaterialIcons name="account-box" size="21" />
+        <Text style={styles.tabText}>계정 관리</Text>
       </TouchableOpacity>
     </View>
   );
@@ -102,16 +101,23 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 25
   },
-  navContainer: {
-    flex: 1,
+  accountContainer: {
     margin: 10,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    backgroundColor: "#F0F8FF",
+    height: height / 4
   },
   tabContainer: {
-    margin: 40
+    flexDirection: "row",
+    marginTop: 40,
+    padding: 10,
+    paddingBottom: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "gray"
   },
   tabText: {
-    fontSize: 23
+    marginLeft: 10,
+    fontSize: 20
   }
 });

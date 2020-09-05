@@ -1,20 +1,26 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
 
+
 import FeedMainScreen from "../screens/feed/FeedMainScreen";
 import FeedDetailScreen from "../screens/feed/FeedDetailScreen";
-import MyDiaryScreen from "../screens/MyDiaryScreen";
+import MyDiaryScreen from "../screens/MyDiaryTab/MyDiaryScreen";
 import UrDiaryMainScreen from "../screens/UrDiary/UrDiaryMainScreen";
 import UrDiaryDeatilScreen from "../screens/UrDiary/UrDiaryDeatilScreen"
 
+
 import MyPageScreen from "../screens/MyPageScreen";
-import DetailScreen from "../screens/DetailScreen";
-import WriteScreen from "../screens/WriteScreeen";
-import Log from "../screens/mypage_detail_screen/Log";
+import DetailScreen from "../screens/MyDiaryTab/DetailScreen";
+import WriteScreen from "../screens/MyDiaryTab/WriteScreeen";
 import Scrap from "../screens/mypage_detail_screen/Scrap";
-import Nowadays_emotion from "../screens/mypage_detail_screen/Nowadays_emotion";
-import Nickname from "../screens/mypage_detail_screen/Nickname";
+import Account from "../screens/mypage_detail_screen/Account";
 import Subscribe from "../screens/mypage_detail_screen/Subscribe";
+import NickName from "../screens/account_manage_detail/NickName";
+import Birth from "../screens/account_manage_detail/Birth";
+import Sex from "../screens/account_manage_detail/Sex";
+import Email from "../screens/account_manage_detail/Email";
+import PhoneNumber from "../screens/account_manage_detail/PhoneNumber";
+import Login from "../screens/mypage_detail_screen/Login";
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
@@ -37,25 +43,6 @@ export function FeedTabNavigator() {
   );
 }
 
-const DetailStack = createStackNavigator();
-
-export function DetailNavigator() {
-  return (
-    <DetailStack.Navigator>
-      <DetailStack.Screen
-        name="DetailScreen"
-        component={DetailScreen}
-        options={navOptionHandler}
-      />
-      <DetailStack.Screen
-        name="WriteScreen"
-        component={WriteScreen}
-        options={navOptionHandler}
-      />
-    </DetailStack.Navigator>
-  );
-}
-
 const TabTwoStack = createStackNavigator();
 
 export function TabTwoNavigator() {
@@ -64,11 +51,6 @@ export function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={MyDiaryScreen}
-        options={navOptionHandler}
-      />
-      <TabTwoStack.Screen
-        name="DetailScreen"
-        component={DetailScreen}
         options={navOptionHandler}
       />
       <TabTwoStack.Screen
@@ -110,8 +92,8 @@ export function TabFourNavigator() {
         options={navOptionHandler}
       />
       <TabFourStack.Screen
-        name="Log"
-        component={Log}
+        name="Login"
+        component={Login}
         options={navOptionHandler}
       />
       <TabFourStack.Screen
@@ -120,13 +102,8 @@ export function TabFourNavigator() {
         options={navOptionHandler}
       />
       <TabFourStack.Screen
-        name="Nowadays_emotion"
-        component={Nowadays_emotion}
-        options={navOptionHandler}
-      />
-      <TabFourStack.Screen
-        name="Nickname"
-        component={Nickname}
+        name="Account"
+        component={Account}
         options={navOptionHandler}
       />
       <TabFourStack.Screen
@@ -134,10 +111,34 @@ export function TabFourNavigator() {
         component={Subscribe}
         options={navOptionHandler}
       />
+      <TabFourStack.Screen
+        name="NickName"
+        component={NickName}
+        options={navOptionHandler}
+      />
+      <TabFourStack.Screen
+        name="Birth"
+        component={Birth}
+        options={navOptionHandler}
+      />
+      <TabFourStack.Screen
+        name="Sex"
+        component={Sex}
+        options={navOptionHandler}
+      />
+      <TabFourStack.Screen
+        name="Email"
+        component={Email}
+        options={navOptionHandler}
+      />
+      <TabFourStack.Screen
+        name="PhoneNumber"
+        component={PhoneNumber}
+        options={navOptionHandler}
+      />
     </TabFourStack.Navigator>
   );
 }
-
 const navOptionHandler = () => ({
   headerShown: false
 });

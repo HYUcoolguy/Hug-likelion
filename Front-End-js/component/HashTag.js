@@ -8,14 +8,7 @@ const mainColor = "#FFF8DC";
 export default class HashTagMaker2 extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      tags: {
-        tag: "",
-        tagsArray: []
-      },
-      tagsColor: mainColor,
-      tagsText: "black"
-    };
+    this._hashesRenderFunc();
   }
 
   updateTagState = (state) => {
@@ -24,13 +17,37 @@ export default class HashTagMaker2 extends React.Component {
     });
   };
 
+  _hashesRenderFunc = () => {
+    if (this.props.hashes !== undefined) {
+      const { hashes } = this.props;
+
+      this.state = {
+        tags: {
+          tag: "",
+          tagsArray: hashes
+        },
+        tagsColor: mainColor,
+        tagsText: "black"
+      };
+    } else {
+      this.state = {
+        tags: {
+          tag: "",
+          tagsArray: []
+        },
+        tagsColor: mainColor,
+        tagsText: "black"
+      };
+    }
+  };
+
   render() {
     return (
       <TagInput
         updateState={this.updateTagState}
         tags={this.state.tags}
         placeholder="Tags..."
-        label="Press comma & space to add a tag"
+        label="해시태그 & enter to add a tag"
         labelStyle={{ color: "black" }}
         leftElement={
           <Icon

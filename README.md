@@ -17,8 +17,8 @@ Back-End: Django, Python, AWS
 ### 3. Demo
 [피드(Tab1)](https://youtu.be/Wg3LpEZMN2I)
 
-[나의일기(Tab2)](https://youtu.be/zjeLdTn5J4Q) ~00:25
+[나의일기(Tab2)](https://youtu.be/w-M89KG95JU) ~00:25
 
 [너의일기(Tab3)](https://youtu.be/4qXZxIfN93c)
 
-[마이페이지(Tab4)](https://youtu.be/zjeLdTn5J4Q) 00:25~
+[마이페이지(Tab4)](https://youtu.be/w-M89KG95JU) 00:25~
